@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:title="Home"
+            android:id="@+id/home"
+            android:checkable="false"
+            android:icon="@drawable/home"/>
+
+        <item
+            android:title="Class Routine"
+            android:id="@+id/routine"
+            android:checkable="false"
+            android:icon="@drawable/ncalander"/>
+
+        <item
+            android:title="CGPA Calculator"
+            android:id="@+id/cgpa"
+            android:checkable="false"
+            android:icon="@drawable/ncalculator"/>
+
+        <item
+            android:title="Quiz Reminder"
+            android:id="@+id/quiz"
+            android:checkable="false"
+            android:icon="@drawable/nreminder"/>
+
+        <item
+            android:title="Class Details"
+            android:id="@+id/details"
+            android:checkable="false"
+            android:icon="@drawable/ndetails"/>
+
+        <item
+            android:title="Results and Information "
+            android:id="@+id/result"
+            android:checkable="false"
+            android:icon="@drawable/result"/>
+
+        <item
+            android:title="Profile"
+            android:id="@+id/profile"
+            android:checkable="false"
+            android:icon="@drawable/nprofile"/>
+
+    </group>
+
+
+
+    <item android:title="More">
+
+        <menu>
+            <item
+                android:title="Settings"
+                android:id="@+id/settings"
+                android:checkable="false"
+                android:icon="@drawable/nsettings"/>
+
+            <item
+                android:title="About Us"
+                android:id="@+id/about"
+                android:checkable="false"
+                android:icon="@drawable/nabout"/>
+
+
+        </menu>
+
+
+    </item>
+
+</menu>

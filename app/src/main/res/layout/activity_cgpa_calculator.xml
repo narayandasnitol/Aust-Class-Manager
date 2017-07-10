@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Input Credits and GPA per subject"
+        android:textStyle="bold"
+        android:textColor="#249c6c"
+        android:textSize="18sp"
+        android:textAlignment="center"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/id_credit_input"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:hint="Credit"
+            android:layout_weight=".5"
+            android:textColorHint="#ae6d3f"
+            android:textAlignment="center"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"/>
+
+        <EditText
+            android:id="@+id/id_gpa_input"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:hint="GPA"
+            android:layout_weight=".5"
+            android:textColorHint="#ae6d3f"
+            android:textAlignment="center"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="#576abe"
+        android:padding="5dp"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:id="@+id/final_cgpa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CGPA = 0.00"
+            android:textSize="29sp"
+            android:textStyle="bold"
+            android:textColor="#ffffff"/>
+
+    </LinearLayout>
+
+
+
+    <Button
+        android:id="@+id/id_add_btn"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:text="ADD"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:background="@drawable/mybutton"
+        android:layout_gravity="center"
+        android:onClick="addResult"/>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="13dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Serial"
+            android:textStyle="bold"
+            android:textColor="#249c6c"
+            android:textSize="16sp"
+            android:layout_marginLeft="25dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Credit"
+            android:textStyle="bold"
+            android:textColor="#249c6c"
+            android:textSize="16sp"
+            android:layout_marginLeft="45dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GPA"
+            android:textStyle="bold"
+            android:textColor="#249c6c"
+            android:textSize="16sp"
+            android:layout_marginLeft="45dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Grade"
+            android:textStyle="bold"
+            android:textColor="#249c6c"
+            android:textSize="16sp"
+            android:layout_marginLeft="55dp"/>
+
+    </LinearLayout>
+
+
+    <ListView
+        android:id="@+id/id_listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="8dp">
+    </ListView>
+
+
+</LinearLayout>

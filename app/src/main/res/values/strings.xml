@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">AUST Class Manager</string>
+    <string name="open_drawer">Open Navigation Drawer</string>
+    <string name="close_drawer">Close Navigation Drawer</string>
+
+    <string-array name="department">
+
+        <item>Architecture</item>
+        <item>BBA</item>
+        <item>CE</item>
+        <item>CSE</item>
+        <item>EEE</item>
+        <item>IPE</item>
+        <item>ME</item>
+        <item>TE</item>
+
+    </string-array>
+
+    <string-array name="year">
+
+        <item>1st Year</item>
+        <item>2nd Year</item>
+        <item>3rd Year</item>
+        <item>4th Year</item>
+
+    </string-array>
+
+    <string-array name="semester">
+
+        <item>1st Semester</item>
+        <item>2nd Semester</item>
+
+    </string-array>
+
+    <string-array name="section">
+
+        <item>Section A</item>
+        <item>Section B</item>
+        <item>Section C</item>
+        <item>Section D</item>
+
+    </string-array>
+
+
+</resources>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="top">
+
+    <TextView
+        android:id="@+id/textView_routine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Class Routine"
+        android:layout_gravity="center"
+        android:textSize="26sp"
+        android:textColor="#111"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp" />
+
+
+    <TextView
+        android:id="@+id/textView_dept"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:background="#ef4e4e"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:text="TextView"
+        android:textColor="#fff"
+        android:textSize="30sp"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="13dp"
+        android:background="#3ca64d">
+
+        <TextView
+            android:id="@+id/year_routine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Year"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginRight="29dp"
+            android:layout_marginEnd="29dp" />
+
+        <TextView
+            android:id="@+id/semester_routine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Semester"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginStart="7dp" />
+
+        <TextView
+            android:id="@+id/section_routine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Section"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginStart="30dp"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/myRoutine"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/textView_routine"
+        android:layout_marginTop="10dp" />
+
+
+
+</LinearLayout>

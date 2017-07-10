@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="230dp"
+    android:padding="16dp"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark"
+    android:background="@drawable/background_door">
+
+
+    <TextView
+        android:id="@+id/header_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Aust Class Manager"
+        android:layout_gravity="center"
+        android:textSize="22sp"
+        android:textColor="#ffdd03"
+        android:fontFamily="serif-monospace"
+        android:textStyle="bold"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+
+
+
+       <de.hdodenhof.circleimageview.CircleImageView
+           android:layout_width="60dp"
+           android:layout_height="60dp"
+           android:src="@drawable/logo_project"
+           android:layout_marginTop="10dp"
+           android:scaleType="centerCrop"
+           android:contentDescription="AUST Class Manager"/>
+
+       <TextView
+           android:id="@+id/header_name"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="18sp"
+           android:textStyle="bold"
+           android:text="Nitol"
+           android:textColor="#dadada"
+           android:paddingTop="2dp"
+           android:layout_marginTop="5dp"
+           android:fontFamily="serif-monospace"/>
+
+
+    <TextView
+        android:id="@+id/header_dept"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:text="CSE"
+        android:textStyle="bold"
+        android:textColor="#dadada"
+        android:fontFamily="serif-monospace"
+        android:layout_marginTop="10dp"/>
+
+
+
+    <TextView
+        android:id="@+id/header_year"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="#dadada"
+        android:textStyle="bold"
+        android:text="1st Year"
+        android:fontFamily="serif-monospace"/>
+
+
+    <TextView
+        android:id="@+id/header_semester"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#dadada"
+        android:text="1st Semester"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:fontFamily="serif-monospace"/>
+
+    <TextView
+        android:id="@+id/header_Section"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Section A"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="#dadada"
+        android:fontFamily="serif-monospace"/>
+
+
+</LinearLayout>

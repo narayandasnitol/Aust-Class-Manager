@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/purple">
+
+    <android.support.v7.widget.Toolbar
+
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:id="@+id/toolbar"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+
+    <Button
+        android:id="@+id/btn_routine"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="29dp"
+        android:background="@drawable/calendar2"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/textView12"
+        android:onClick="classRoutine"/>
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Class Routine"
+        android:textSize="18sp"
+        android:textColor="#fefefe"
+        android:textStyle="bold"
+        android:layout_below="@+id/btn_routine"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="12dp" />
+
+    <Button
+        android:id="@+id/btn_cgpa"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/calculation"
+        android:layout_above="@+id/textView13"
+        android:layout_alignEnd="@+id/btn_details"
+        android:layout_marginEnd="7dp"
+        android:onClick="cgpaCalculator"/>
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="18dp"
+        android:text="CGPA Calcualtor"
+        android:textSize="18sp"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:layout_alignBaseline="@+id/textView12"
+        android:layout_alignBottom="@+id/textView12"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:id="@+id/btn_quiz"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="27dp"
+        android:background="@drawable/notepad"
+        android:layout_below="@+id/textView12"
+        android:layout_alignEnd="@+id/textView12"
+        android:onClick="quizReminder"/>
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quiz Reminder"
+        android:textSize="18sp"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:layout_below="@+id/btn_quiz"
+        android:layout_alignStart="@+id/textView12" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignEnd="@+id/btn_cgpa"
+        android:layout_alignTop="@+id/btn_quiz"
+        android:background="@drawable/presentation" />
+
+    <TextView
+        android:id="@+id/btn_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Class Details"
+        android:textSize="18sp"
+        android:textColor="#fffafa"
+        android:textStyle="bold"
+        android:layout_below="@+id/button5"
+        android:layout_alignEnd="@+id/textView13"
+        android:layout_marginEnd="15dp" />
+
+    <Button
+        android:id="@+id/btn_result"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/test"
+        android:layout_below="@+id/btn_details"
+        android:layout_alignStart="@+id/btn_routine"
+        android:onClick="Result"/>
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="    Results \n       and \nInformation"
+        android:textSize="18sp"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:layout_below="@+id/btn_result"
+        android:layout_alignStart="@+id/btn_result" />
+
+    <Button
+        android:id="@+id/btn_settings"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/settings_1"
+        android:onClick="Settings"
+        android:layout_above="@+id/textView17"
+        android:layout_alignStart="@+id/btn_details" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Settings"
+        android:textSize="18sp"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:layout_marginEnd="11dp"
+        android:layout_below="@+id/btn_result"
+        android:layout_alignEnd="@+id/btn_settings" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#fa9837"
+        android:text="AUST CLASS MANAGER"
+        android:textSize="28sp"
+        android:fontFamily="serif-monospace"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>

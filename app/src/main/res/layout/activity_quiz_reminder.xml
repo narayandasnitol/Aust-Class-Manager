@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <Button
+        android:id="@+id/btn_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SET TIME"
+        android:layout_below="@+id/editText_details"
+        android:layout_toStartOf="@+id/editText_details"
+        android:layout_marginTop="61dp" />
+
+
+    <Button
+        android:id="@+id/btn_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SET DATE"
+        android:layout_below="@+id/btn_time"
+        android:layout_alignStart="@+id/btn_time"
+        android:layout_marginTop="31dp" />
+
+
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="37dp"
+        android:text="QUIZ REMINDER"
+        android:layout_alignParentTop="true"
+        android:textSize="32sp"
+        android:textAlignment="center"
+        android:layout_alignParentEnd="true"
+        android:textColor="#111"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:textSize="32sp"
+        android:background="@color/colorAccent"
+        android:textColor="#fff"
+        android:layout_marginBottom="52dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:id="@+id/editText_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView10"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="34dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Title"/>
+
+    <EditText
+        android:id="@+id/editText_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/editText_title"
+        android:layout_below="@+id/editText_title"
+        android:layout_marginTop="64dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Details"/>
+
+    <TextView
+        android:id="@+id/textView_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="28dp"
+        android:text="TextView"
+        android:textSize="22sp"
+        android:textColor="#111"
+        android:layout_alignBaseline="@+id/btn_time"
+        android:layout_alignBottom="@+id/btn_time"
+        android:layout_alignEnd="@+id/editText_details" />
+
+    <TextView
+        android:id="@+id/textView_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_alignBaseline="@+id/btn_date"
+        android:layout_alignBottom="@+id/btn_date"
+        android:layout_alignStart="@+id/textView_time"
+        android:textSize="22sp"
+        android:textColor="#111"/>
+
+
+</RelativeLayout>
