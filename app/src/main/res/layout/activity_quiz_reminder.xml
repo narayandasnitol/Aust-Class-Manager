@@ -13,7 +13,7 @@
         android:textSize="32sp"
         android:textAlignment="center"
         android:layout_alignParentEnd="true"
-        android:textColor="#111"
+        android:textColor="#706a6a"
         android:textStyle="bold"/>
 
 
