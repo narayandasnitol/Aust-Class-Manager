@@ -14,8 +14,11 @@ public class QuizDatabaseHelper extends SQLiteOpenHelper{
     public static final String COL_1 = "ID";
     public static final String COL_2 = "TITLE";
     public static final String COL_3 = "DETAILS";
-    public static final String COL_4 = "TIME";
-    public static final String COL_5 = "DATE";
+    public static final String COL_4 = "HOUR";
+    public static final String COL_5 = "MINUTE";
+    public static final String COL_6 = "YEAR";
+    public static final String COL_7 = "MONTH";
+    public static final String COL_8 = "DAY";
 
     public QuizDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -24,7 +27,7 @@ public class QuizDatabaseHelper extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table " + TABLE_NAME +"(ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "TITLE TEXT, DETAILS TEXT, TIME TEXT, DATE TEXT)" );
+                "TITLE TEXT, DETAILS TEXT, HOUR TEXT, MINUTE TEXT, YEAR TEXT, MONTH TEXT, DAY TEXT)" );
     }
 
     @Override
@@ -33,15 +36,18 @@ public class QuizDatabaseHelper extends SQLiteOpenHelper{
         onCreate(db);
     }
 
-    public boolean insertData(String title, String details, String time, String date){
+    public boolean insertData(String title, String details, String hour, String minute, String year, String month, String day){
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
         contentValues.put(COL_2,title);
         contentValues.put(COL_3,details);
-        contentValues.put(COL_4,time);
-        contentValues.put(COL_5,date);
+        contentValues.put(COL_4,hour);
+        contentValues.put(COL_5,minute);
+        contentValues.put(COL_6,year);
+        contentValues.put(COL_7,month);
+        contentValues.put(COL_8,day);
 
 
         long result = db.insert(TABLE_NAME, null, contentValues);
@@ -64,15 +70,18 @@ public class QuizDatabaseHelper extends SQLiteOpenHelper{
     }
 
 
-    public boolean updateData(String id,  String title, String details, String time, String date){
+    public boolean updateData(String id,  String title, String details, String hour, String minute, String year, String month, String day){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
         contentValues.put(COL_1, id);
         contentValues.put(COL_2, title);
         contentValues.put(COL_3, details);
-        contentValues.put(COL_4, time);
-        contentValues.put(COL_5, date);
+        contentValues.put(COL_4, hour);
+        contentValues.put(COL_5, minute);
+        contentValues.put(COL_6, year);
+        contentValues.put(COL_7, month);
+        contentValues.put(COL_8, day);
 
         db.update(TABLE_NAME,contentValues, "ID = ?", new String[] { id });
 
