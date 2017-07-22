@@ -82,6 +82,10 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
         startActivity(intent);
     }
 
+    public void classDetails(View view){
+        Intent intent= new Intent(MenuActivity.this, ClassDetails.class);
+        startActivity(intent);
+    }
 
 
 
@@ -201,7 +205,7 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
 
                 break;
 
-            case R.id.details:
+            case R.id.my_details:
                 Toast.makeText(getApplicationContext(),"Class Details",Toast.LENGTH_SHORT).show();
 
                 break;

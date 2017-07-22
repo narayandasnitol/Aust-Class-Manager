@@ -276,7 +276,7 @@ public class ClassRoutineActivity extends AppCompatActivity implements Navigatio
 
                 break;
 
-            case R.id.details:
+            case R.id.my_details:
                 Toast.makeText(getApplicationContext(),"Class Details",Toast.LENGTH_SHORT).show();
 
                 break;

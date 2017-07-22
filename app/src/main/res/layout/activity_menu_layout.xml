@@ -81,12 +81,13 @@
         android:layout_alignStart="@+id/textView12" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/btn_class_details"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_alignEnd="@+id/btn_cgpa"
         android:layout_alignTop="@+id/btn_quiz"
-        android:background="@drawable/presentation" />
+        android:background="@drawable/presentation"
+        android:onClick="classDetails"/>
 
     <TextView
         android:id="@+id/btn_details"
@@ -96,7 +97,7 @@
         android:textSize="18sp"
         android:textColor="#fffafa"
         android:textStyle="bold"
-        android:layout_below="@+id/button5"
+        android:layout_below="@+id/btn_class_details"
         android:layout_alignEnd="@+id/textView13"
         android:layout_marginEnd="15dp" />
 
@@ -138,9 +139,9 @@
         android:textSize="18sp"
         android:textColor="#ffffff"
         android:textStyle="bold"
-        android:layout_marginEnd="11dp"
         android:layout_below="@+id/btn_result"
-        android:layout_alignEnd="@+id/btn_settings" />
+        android:layout_alignStart="@+id/btn_settings"
+        android:layout_marginStart="14dp" />
 
     <TextView
         android:id="@+id/textView18"

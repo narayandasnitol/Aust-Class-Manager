@@ -66,7 +66,7 @@ public class CgpaCalculator extends AppCompatActivity implements NavigationView.
         drawerLayout.setDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-        navigationView.getMenu().getItem(1).setChecked(true);
+        navigationView.getMenu().getItem(2).setChecked(true);
 
         addResult();
 
@@ -168,7 +168,7 @@ public class CgpaCalculator extends AppCompatActivity implements NavigationView.
                         arrayList3.add(my_gpa);
                         arrayList4.add(my_grade);
 
-                        MyCustomListViewAdapter customAdapter = new MyCustomListViewAdapter(CgpaCalculator.this,
+                        CustomCgpaAdapter customAdapter = new CustomCgpaAdapter(CgpaCalculator.this,
                                 arrayList, arrayList2, arrayList3, arrayList4);
                         customAdapter.notifyDataSetChanged();
                         lv.setAdapter(customAdapter);
@@ -222,7 +222,7 @@ public class CgpaCalculator extends AppCompatActivity implements NavigationView.
 
                 break;
 
-            case R.id.details:
+            case R.id.my_details:
                 Toast.makeText(getApplicationContext(),"Class Details",Toast.LENGTH_SHORT).show();
 
                 break;

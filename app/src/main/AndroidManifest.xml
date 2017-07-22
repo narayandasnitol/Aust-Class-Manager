@@ -40,8 +40,10 @@
         <activity
             android:name=".ResultCheckActivity"
             android:label="Results and Information" />
-        <activity android:name=".SetQuiz"
-            android:label="Set Quiz"></activity>
+        <activity
+            android:name=".SetQuiz"
+            android:label="Set Quiz" />
+        <activity android:name=".ClassDetails"></activity>
     </application>
 
 </manifest>

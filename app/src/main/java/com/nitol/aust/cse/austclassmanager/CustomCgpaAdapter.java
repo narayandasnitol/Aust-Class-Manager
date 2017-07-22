@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class MyCustomListViewAdapter extends BaseAdapter{
+public class CustomCgpaAdapter extends BaseAdapter{
 
     CgpaCalculator cg = new CgpaCalculator();
 
@@ -22,7 +22,7 @@ public class MyCustomListViewAdapter extends BaseAdapter{
     Context context;
     private static LayoutInflater  inflater = null;
 
-    public MyCustomListViewAdapter(CgpaCalculator mainAct, ArrayList<String> a1, ArrayList<String>
+    public CustomCgpaAdapter(CgpaCalculator mainAct, ArrayList<String> a1, ArrayList<String>
             a2, ArrayList<String> a3, ArrayList<String> a4){
         aL1 = a1;
         aL2 = a2;

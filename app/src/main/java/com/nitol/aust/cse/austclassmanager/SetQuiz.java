@@ -113,17 +113,27 @@ public class SetQuiz extends AppCompatActivity implements
                 q_title = title.getText().toString();
                 q_details = details.getText().toString();
 
-                boolean isInserted =  myDb.insertData(q_title, q_details, h, m, y, mo, d);
+                if(q_title.length() == 0 || q_details.length() == 0){
+                    Toast.makeText(getApplicationContext(), "please fill the empty field!",
+                            Toast.LENGTH_SHORT).show();
 
-                if(isInserted == true){
-                    Toast.makeText(getApplicationContext(),"Data Inserted !", Toast.LENGTH_LONG).show();
                 }
                 else{
-                    Toast.makeText(getApplicationContext(),"Data not Inserted !", Toast.LENGTH_LONG).show();
+                    boolean isInserted =  myDb.insertData(q_title, q_details, h, m, y, mo, d);
+
+                    if(isInserted == true){
+                        Toast.makeText(getApplicationContext(),"Data Inserted !", Toast.LENGTH_LONG).show();
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext(),"Data not Inserted !", Toast.LENGTH_LONG).show();
+                    }
+
+                    Intent intent = new Intent(SetQuiz.this, QuizReminder.class);
+                    startActivity(intent);
+                    finish();
                 }
 
-                Intent intent = new Intent(SetQuiz.this, QuizReminder.class);
-                startActivity(intent);
+
 
             }
         });
@@ -222,4 +232,6 @@ public class SetQuiz extends AppCompatActivity implements
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }

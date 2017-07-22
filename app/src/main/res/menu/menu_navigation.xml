@@ -29,7 +29,7 @@
 
         <item
             android:title="Class Details"
-            android:id="@+id/details"
+            android:id="@+id/my_details"
             android:checkable="false"
             android:icon="@drawable/ndetails"/>
 

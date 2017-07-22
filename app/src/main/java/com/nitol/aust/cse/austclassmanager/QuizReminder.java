@@ -1,6 +1,7 @@
 package com.nitol.aust.cse.austclassmanager;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -13,14 +14,30 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.Toast;
 
-public class QuizReminder extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+import java.util.ArrayList;
+
+public class QuizReminder extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener{
 
     FloatingActionButton fabButton;
     Toolbar toolbar;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+
+    ListView lv;
+    QuizDatabaseHelper myDb;
+
+    ArrayList<String> arrayList = new ArrayList<>();
+    ArrayList<String> arrayList2 = new ArrayList<>();
+    ArrayList<String> arrayList3 = new ArrayList<>();
+    ArrayList<String> arrayList4 = new ArrayList<>();
+    ArrayList<String> arrayList5 = new ArrayList<>();
+    ArrayList<String> arrayList6 = new ArrayList<>();
+    ArrayList<String> arrayList7 = new ArrayList<>();
+    ArrayList<Integer> arrayList8 = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +45,9 @@ public class QuizReminder extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.navi_draw_quiz_reminder);
 
         fabButton = (FloatingActionButton) findViewById(R.id.floating_button);
+
+        lv =  (ListView) findViewById(R.id.custom_listView);
+        myDb = new QuizDatabaseHelper(this);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -48,10 +68,42 @@ public class QuizReminder extends AppCompatActivity implements NavigationView.On
             public void onClick(View v) {
                 Intent intent = new Intent(QuizReminder.this, SetQuiz.class);
                 startActivity(intent);
+                finish();
             }
         });
 
+
+        Cursor data = myDb.getAllData();
+
+        if(data.getCount() == 0){
+            Toast.makeText(getApplicationContext(), "Nothing found!", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            while(data.moveToNext()){
+                arrayList.add(data.getString(1));
+                arrayList2.add(data.getString(2));
+                arrayList3.add(data.getString(3));
+                arrayList4.add(data.getString(4));
+                arrayList5.add(data.getString(5));
+                arrayList6.add(data.getString(6));
+                arrayList7.add(data.getString(7));
+
+                int[] myImage = {R.drawable.delete,R.drawable.delete,R.drawable.delete,R.drawable.delete,
+                        R.drawable.delete,R.drawable.delete,R.drawable.delete,R.drawable.delete,
+                        R.drawable.delete,R.drawable.delete,R.drawable.delete,R.drawable.delete,R.drawable.delete,
+                        R.drawable.delete, R.drawable.delete, R.drawable.delete, R.drawable.delete, R.drawable.delete};
+
+                Quiz_list_adapter customAdapter = new Quiz_list_adapter(QuizReminder.this,
+                        arrayList, arrayList2, arrayList3, arrayList4, arrayList5, arrayList6, arrayList7);
+                customAdapter.notifyDataSetChanged();
+                lv.setAdapter(customAdapter);
+            }
+        }
+
+
     }
+
+
 
     @Override
     public void onBackPressed() {
@@ -62,6 +114,7 @@ public class QuizReminder extends AppCompatActivity implements NavigationView.On
 
         else{
             super.onBackPressed();
+
         }
     }
 
@@ -91,7 +144,7 @@ public class QuizReminder extends AppCompatActivity implements NavigationView.On
 
                 break;
 
-            case R.id.details:
+            case R.id.my_details:
                 Toast.makeText(getApplicationContext(),"Class Details",Toast.LENGTH_SHORT).show();
 
                 break;
