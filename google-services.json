@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1010131496911",
+    "firebase_url": "https://austclassmanager.firebaseio.com",
+    "project_id": "austclassmanager",
+    "storage_bucket": "austclassmanager.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1010131496911:android:6a280eb403c192bc",
+        "android_client_info": {
+          "package_name": "com.nitol.aust.cse.austclassmanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1010131496911-k5ndf12c1fcin7l0r3cpe1s4nuu1tc19.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfo5FVoljrFj0vA4GVAlcKo5a5_bkLQ1E"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

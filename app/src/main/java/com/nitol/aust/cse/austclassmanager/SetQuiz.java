@@ -1,6 +1,8 @@
 package com.nitol.aust.cse.austclassmanager;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,6 +28,7 @@ public class SetQuiz extends AppCompatActivity implements
     Button save, time;
     TextView s_date, s_time;
 
+
     QuizDatabaseHelper myDb;
 
     String q_title, q_details, h, m, y, mo, d;
@@ -50,8 +53,9 @@ public class SetQuiz extends AppCompatActivity implements
         Calendar c = Calendar.getInstance();
 
         String yy = String.valueOf(c.get(Calendar.YEAR));
-        String mm = String.valueOf(c.get(Calendar.MONTH));
+        String mm = String.valueOf(c.get(Calendar.MONTH)+1);
         String dd = String.valueOf(c.get(Calendar.DAY_OF_MONTH));
+
 
         int hh = c.get(Calendar.HOUR);
         int mmm = c.get(Calendar.MINUTE);
@@ -119,20 +123,38 @@ public class SetQuiz extends AppCompatActivity implements
 
                 }
                 else{
-                    boolean isInserted =  myDb.insertData(q_title, q_details, h, m, y, mo, d);
+                    int alarm_id =  myDb.insertData(q_title, q_details, h, m, y, mo, d);
 
-                    if(isInserted == true){
-                        Toast.makeText(getApplicationContext(),"Data Inserted !", Toast.LENGTH_LONG).show();
-                    }
-                    else{
-                        Toast.makeText(getApplicationContext(),"Data not Inserted !", Toast.LENGTH_LONG).show();
+                    if(Integer.valueOf(m) <=9){
+                        m = "0"+m;
                     }
 
-                    Intent intent = new Intent(SetQuiz.this, QuizReminder.class);
-                    startActivity(intent);
+                    Calendar calendar2 = Calendar.getInstance();
+
+                    calendar2.set(Calendar.HOUR_OF_DAY, Integer.parseInt(h));
+                    calendar2.set(Calendar.MINUTE, Integer.parseInt(m));
+                    calendar2.set(Calendar.YEAR, Integer.parseInt(y));
+                    calendar2.set(Calendar.MONTH, Integer.parseInt(mo)-1);
+                    calendar2.set(Calendar.DAY_OF_MONTH, Integer.parseInt(d)-1);
+
+
+                    Intent intent = new Intent(getApplicationContext(), NotificationReceiver.class);
+                    intent.putExtra("ID", alarm_id);
+
+                    PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), alarm_id, intent,
+                            PendingIntent.FLAG_UPDATE_CURRENT);
+
+                    AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+
+                    alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar2.getTimeInMillis(),
+                            AlarmManager.INTERVAL_FIFTEEN_MINUTES, pendingIntent);
+
+
+
+                    Intent intent2 = new Intent(SetQuiz.this, QuizReminder.class);
+                    startActivity(intent2);
                     finish();
                 }
-
 
 
             }

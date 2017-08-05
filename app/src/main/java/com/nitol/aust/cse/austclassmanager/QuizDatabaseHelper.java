@@ -35,7 +35,7 @@ public class QuizDatabaseHelper extends SQLiteOpenHelper{
         onCreate(db);
     }
 
-    public boolean insertData(String title, String details, String hour, String minute,
+    public int insertData(String title, String details, String hour, String minute,
                               String year, String month, String day){
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -52,12 +52,9 @@ public class QuizDatabaseHelper extends SQLiteOpenHelper{
 
         long result = db.insert(TABLE_NAME, null, contentValues);
 
-        if(result == -1){
-            return  false;
-        }
-        else{
-            return true;
-        }
+        return (int) result;
+
+
     }
 
 
@@ -69,9 +66,16 @@ public class QuizDatabaseHelper extends SQLiteOpenHelper{
         return result;
     }
 
-    public Cursor getId(String where){
+    public Cursor getId(String title){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor c = db.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+COL_2+" = '"+where+"'", null);
+        Cursor c = db.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+COL_2+" = '"+title+"'", null);
+
+        return c;
+    }
+
+    public Cursor getQuizTitle(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor c = db.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+COL_1+" = '"+id+"'", null);
 
         return c;
     }

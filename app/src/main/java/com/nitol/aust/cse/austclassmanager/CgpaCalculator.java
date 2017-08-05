@@ -1,6 +1,7 @@
 package com.nitol.aust.cse.austclassmanager;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -21,6 +22,8 @@ import android.widget.Toast;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class CgpaCalculator extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     ListView lv;
     Toolbar toolbar;
@@ -33,6 +36,7 @@ public class CgpaCalculator extends AppCompatActivity implements NavigationView.
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+    DatabaseHelper myDb;
 
 
     ArrayList<String> arrayList = new ArrayList<>();
@@ -40,12 +44,20 @@ public class CgpaCalculator extends AppCompatActivity implements NavigationView.
     ArrayList<String> arrayList3 = new ArrayList<>();
     ArrayList<String> arrayList4 = new ArrayList<>();
 
+    String myDept;
+    String myYear;
+    String mySemester;
+    String mySection;
+    String myName;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navi_draw_cgpa);
+
+        myDb = new DatabaseHelper(this);
 
         lv = (ListView) findViewById(R.id.id_listView);
         add_btn = (Button) findViewById(R.id.id_add_btn);
@@ -69,6 +81,94 @@ public class CgpaCalculator extends AppCompatActivity implements NavigationView.
         navigationView.getMenu().getItem(2).setChecked(true);
 
         addResult();
+        getAllData();
+
+    }
+
+    public void getAllData() {
+
+        Cursor result = myDb.getAllData();
+
+
+        String student_department = "", student_year = "", student_semester = "",
+                student_section = "", student_name = "";
+
+
+        result.moveToFirst();
+        while (!result.isAfterLast()) {
+
+            if (result.getString(result.getColumnIndex("NAME")) != null) {
+                student_name += result.getString(result.getColumnIndex("NAME"));
+                student_name += "\n";
+            }
+            result.moveToNext();
+
+            result.moveToFirst();
+            if (result.getString(result.getColumnIndex("DEPARTMENT")) != null) {
+                student_department += result.getString(result.getColumnIndex("DEPARTMENT"));
+                student_department += "\n";
+            }
+            result.moveToNext();
+
+
+            result.moveToFirst();
+            if (result.getString(result.getColumnIndex("YEAR")) != null) {
+                student_year += result.getString(result.getColumnIndex("YEAR"));
+                student_year += "\n";
+            }
+            result.moveToNext();
+
+
+            result.moveToFirst();
+            if (result.getString(result.getColumnIndex("SEMESTER")) != null) {
+                student_semester += result.getString(result.getColumnIndex("SEMESTER"));
+                student_semester += "\n";
+            }
+            result.moveToNext();
+
+
+            result.moveToFirst();
+            if (result.getString(result.getColumnIndex("SECTION")) != null) {
+                student_section += result.getString(result.getColumnIndex("SECTION"));
+                student_section += "\n";
+            }
+            result.moveToNext();
+
+        }
+
+        myName = student_name.trim();
+        myDept = student_department.trim();
+        myYear = student_year.trim();
+        mySemester = student_semester.trim();
+        mySection = student_section.trim();
+
+        View hView =  navigationView.getHeaderView(0);
+
+        TextView nav_name = (TextView)hView.findViewById(R.id.header_name);
+        nav_name.setText(myName);
+
+
+        TextView nav_dept = (TextView)hView.findViewById(R.id.header_dept);
+        nav_dept.setText(myDept);
+
+        TextView nav_year = (TextView)hView.findViewById(R.id.header_year);
+        nav_year.setText(myYear);
+
+        TextView nav_semester = (TextView)hView.findViewById(R.id.header_semester);
+        nav_semester.setText(mySemester);
+
+        TextView nav_section = (TextView)hView.findViewById(R.id.header_Section);
+        nav_section.setText(mySection);
+
+        CircleImageView circleImageView = (CircleImageView)hView.findViewById(R.id.header_image);
+        circleImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CgpaCalculator.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 
@@ -223,12 +323,16 @@ public class CgpaCalculator extends AppCompatActivity implements NavigationView.
                 break;
 
             case R.id.my_details:
-                Toast.makeText(getApplicationContext(),"Class Details",Toast.LENGTH_SHORT).show();
+                Intent intent22 = new Intent(CgpaCalculator.this, ClassDetails.class);
+                startActivity(intent22);
+                finish();
 
                 break;
 
             case R.id.quiz:
-                Toast.makeText(getApplicationContext(),"Quiz Reminder",Toast.LENGTH_SHORT).show();
+                Intent intent223 = new Intent(CgpaCalculator.this, QuizReminder.class);
+                startActivity(intent223);
+                finish();
 
                 break;
 

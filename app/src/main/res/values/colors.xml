@@ -7,4 +7,5 @@
     <color name="colorItemText">#111111</color>
     <color name="transparent_color">#00000000</color>
     <color name="tabBack">#4ab9e2</color>
+    <color name="notification">#e351d4</color>
 </resources>

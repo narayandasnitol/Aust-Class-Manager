@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e6e6e6">
+
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="87dp"
+        android:text="Quiz1: "
+        android:textStyle="bold"
+        android:textColor="#912424"
+        android:textSize="22sp"
+        android:layout_below="@+id/textView23"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:id="@+id/q1"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="marks"
+        android:layout_alignBottom="@+id/textView8"
+        android:layout_alignEnd="@+id/textView21" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:textStyle="bold"
+        android:text="Quiz2:"
+        android:textColor="#912424"
+        android:textSize="22sp"
+        android:layout_below="@+id/textView8"
+        android:layout_alignStart="@+id/textView8" />
+
+    <EditText
+        android:id="@+id/q2"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="marks"
+        android:inputType="number"
+        android:layout_alignBaseline="@+id/textView9"
+        android:layout_alignBottom="@+id/textView9"
+        android:layout_alignStart="@+id/q1" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:text="Quiz3:"
+        android:textColor="#912424"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:layout_below="@+id/q2"
+        android:layout_alignStart="@+id/textView9" />
+
+    <EditText
+        android:id="@+id/q3"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="marks"
+        android:layout_alignBaseline="@+id/textView10"
+        android:layout_alignBottom="@+id/textView10"
+        android:layout_alignStart="@+id/q2" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quiz4:"
+        android:textColor="#912424"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:layout_alignTop="@+id/q4"
+        android:layout_alignStart="@+id/textView10" />
+
+    <EditText
+        android:id="@+id/q4"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="marks"
+        android:layout_below="@+id/q3"
+        android:layout_alignStart="@+id/q3" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Attendance:"
+        android:textColor="#912424"
+        android:textSize="22sp"
+        android:layout_below="@+id/q4"
+        android:layout_alignStart="@+id/textView11" />
+
+    <EditText
+        android:id="@+id/ass"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="marks"
+        android:layout_alignBaseline="@+id/textView15"
+        android:layout_alignBottom="@+id/textView15"
+        android:layout_alignStart="@+id/q4" />
+
+    <Button
+        android:id="@+id/btn_cal"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mybutton"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:text="Calculate"
+        android:layout_marginBottom="22dp"
+        android:layout_above="@+id/show_mark"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/show_mark"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:textColor="#ffffff"
+        android:padding="5dp"
+        android:text="Backup Mark"
+        android:background="#b355af"
+        android:textSize="28sp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#3b923f"
+        android:padding="5dp"
+        android:gravity="center"
+        android:text="Calculate Backup Marks"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Best 3 Marks of Quiz Will be Counted"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#941a1a"
+        android:layout_marginTop="13dp"
+        android:layout_below="@+id/textView20"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:text="Quiz = 20 / Attendance = 10 / Total = 20+10=30"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#002596"
+        android:layout_below="@+id/textView21"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp" />
+
+</RelativeLayout>

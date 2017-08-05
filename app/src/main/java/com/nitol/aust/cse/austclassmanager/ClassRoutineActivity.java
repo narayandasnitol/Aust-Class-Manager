@@ -12,10 +12,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import uk.co.senab.photoview.PhotoViewAttacher;
 
 public class ClassRoutineActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -238,6 +240,34 @@ public class ClassRoutineActivity extends AppCompatActivity implements Navigatio
         }
 
 
+        View hView =  navigationView.getHeaderView(0);
+
+        TextView nav_name = (TextView)hView.findViewById(R.id.header_name);
+        nav_name.setText(myName);
+
+
+        TextView nav_dept = (TextView)hView.findViewById(R.id.header_dept);
+        nav_dept.setText(myDept);
+
+        TextView nav_year = (TextView)hView.findViewById(R.id.header_year);
+        nav_year.setText(myYear);
+
+        TextView nav_semester = (TextView)hView.findViewById(R.id.header_semester);
+        nav_semester.setText(mySemester);
+
+        TextView nav_section = (TextView)hView.findViewById(R.id.header_Section);
+        nav_section.setText(mySection);
+
+        CircleImageView circleImageView = (CircleImageView)hView.findViewById(R.id.header_image);
+        circleImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ClassRoutineActivity.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 
     @Override
@@ -277,12 +307,16 @@ public class ClassRoutineActivity extends AppCompatActivity implements Navigatio
                 break;
 
             case R.id.my_details:
-                Toast.makeText(getApplicationContext(),"Class Details",Toast.LENGTH_SHORT).show();
+                Intent intent22 = new Intent(ClassRoutineActivity.this, ClassDetails.class);
+                startActivity(intent22);
+                finish();
 
                 break;
 
             case R.id.quiz:
-                Toast.makeText(getApplicationContext(),"Quiz Reminder",Toast.LENGTH_SHORT).show();
+                Intent intent21 = new Intent(ClassRoutineActivity.this, QuizReminder.class);
+                startActivity(intent21);
+                finish();
 
                 break;
 

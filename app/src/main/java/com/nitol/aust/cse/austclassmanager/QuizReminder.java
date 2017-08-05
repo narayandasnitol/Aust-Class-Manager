@@ -15,9 +15,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class QuizReminder extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
@@ -29,6 +32,7 @@ public class QuizReminder extends AppCompatActivity
 
     ListView lv;
     QuizDatabaseHelper myDb;
+    DatabaseHelper myDb2;
 
     ArrayList<String> arrayList = new ArrayList<>();
     ArrayList<String> arrayList2 = new ArrayList<>();
@@ -37,7 +41,12 @@ public class QuizReminder extends AppCompatActivity
     ArrayList<String> arrayList5 = new ArrayList<>();
     ArrayList<String> arrayList6 = new ArrayList<>();
     ArrayList<String> arrayList7 = new ArrayList<>();
-    ArrayList<Integer> arrayList8 = new ArrayList<>();
+
+    String myDept;
+    String myYear;
+    String mySemester;
+    String mySection;
+    String myName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +57,7 @@ public class QuizReminder extends AppCompatActivity
 
         lv =  (ListView) findViewById(R.id.custom_listView);
         myDb = new QuizDatabaseHelper(this);
+        myDb2 = new DatabaseHelper(this);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -88,10 +98,6 @@ public class QuizReminder extends AppCompatActivity
                 arrayList6.add(data.getString(6));
                 arrayList7.add(data.getString(7));
 
-                int[] myImage = {R.drawable.delete,R.drawable.delete,R.drawable.delete,R.drawable.delete,
-                        R.drawable.delete,R.drawable.delete,R.drawable.delete,R.drawable.delete,
-                        R.drawable.delete,R.drawable.delete,R.drawable.delete,R.drawable.delete,R.drawable.delete,
-                        R.drawable.delete, R.drawable.delete, R.drawable.delete, R.drawable.delete, R.drawable.delete};
 
                 Quiz_list_adapter customAdapter = new Quiz_list_adapter(QuizReminder.this,
                         arrayList, arrayList2, arrayList3, arrayList4, arrayList5, arrayList6, arrayList7);
@@ -99,6 +105,96 @@ public class QuizReminder extends AppCompatActivity
                 lv.setAdapter(customAdapter);
             }
         }
+
+        getAllData();
+
+
+    }
+
+
+    public void getAllData() {
+
+        Cursor result = myDb2.getAllData();
+
+
+        String student_department = "", student_year = "", student_semester = "",
+                student_section = "", student_name = "";
+
+
+        result.moveToFirst();
+        while (!result.isAfterLast()) {
+
+            if (result.getString(result.getColumnIndex("NAME")) != null) {
+                student_name += result.getString(result.getColumnIndex("NAME"));
+                student_name += "\n";
+            }
+            result.moveToNext();
+
+            result.moveToFirst();
+            if (result.getString(result.getColumnIndex("DEPARTMENT")) != null) {
+                student_department += result.getString(result.getColumnIndex("DEPARTMENT"));
+                student_department += "\n";
+            }
+            result.moveToNext();
+
+
+            result.moveToFirst();
+            if (result.getString(result.getColumnIndex("YEAR")) != null) {
+                student_year += result.getString(result.getColumnIndex("YEAR"));
+                student_year += "\n";
+            }
+            result.moveToNext();
+
+
+            result.moveToFirst();
+            if (result.getString(result.getColumnIndex("SEMESTER")) != null) {
+                student_semester += result.getString(result.getColumnIndex("SEMESTER"));
+                student_semester += "\n";
+            }
+            result.moveToNext();
+
+
+            result.moveToFirst();
+            if (result.getString(result.getColumnIndex("SECTION")) != null) {
+                student_section += result.getString(result.getColumnIndex("SECTION"));
+                student_section += "\n";
+            }
+            result.moveToNext();
+
+        }
+
+        myName = student_name.trim();
+        myDept = student_department.trim();
+        myYear = student_year.trim();
+        mySemester = student_semester.trim();
+        mySection = student_section.trim();
+
+        View hView =  navigationView.getHeaderView(0);
+
+        TextView nav_name = (TextView)hView.findViewById(R.id.header_name);
+        nav_name.setText(myName);
+
+
+        TextView nav_dept = (TextView)hView.findViewById(R.id.header_dept);
+        nav_dept.setText(myDept);
+
+        TextView nav_year = (TextView)hView.findViewById(R.id.header_year);
+        nav_year.setText(myYear);
+
+        TextView nav_semester = (TextView)hView.findViewById(R.id.header_semester);
+        nav_semester.setText(mySemester);
+
+        TextView nav_section = (TextView)hView.findViewById(R.id.header_Section);
+        nav_section.setText(mySection);
+
+        CircleImageView circleImageView = (CircleImageView)hView.findViewById(R.id.header_image);
+        circleImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(QuizReminder.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
     }
@@ -145,7 +241,9 @@ public class QuizReminder extends AppCompatActivity
                 break;
 
             case R.id.my_details:
-                Toast.makeText(getApplicationContext(),"Class Details",Toast.LENGTH_SHORT).show();
+                Intent intent222 = new Intent(QuizReminder.this, ClassDetails.class);
+                startActivity(intent222);
+                finish();
 
                 break;
 

@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:text="Class Routine"
         android:layout_gravity="center"
-        android:textSize="26sp"
+        android:textSize="28sp"
         android:textColor="#111"
         android:textStyle="bold"
         android:layout_marginTop="10dp" />

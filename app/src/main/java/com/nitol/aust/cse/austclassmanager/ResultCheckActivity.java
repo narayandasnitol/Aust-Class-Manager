@@ -1,6 +1,7 @@
 package com.nitol.aust.cse.austclassmanager;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -16,10 +17,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ResultCheckActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -28,6 +33,14 @@ public class ResultCheckActivity extends AppCompatActivity implements Navigation
     Toolbar toolbar;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+
+    DatabaseHelper myDb;
+
+    String myDept;
+    String myYear;
+    String mySemester;
+    String mySection;
+    String myName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +66,100 @@ public class ResultCheckActivity extends AppCompatActivity implements Navigation
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(5).setChecked(true);
 
+        myDb = new DatabaseHelper(this);
+
+
+        getAllData();
+
+    }
+
+    public void getAllData() {
+
+        Cursor result = myDb.getAllData();
+
+
+        String student_department = "", student_year = "", student_semester = "",
+                student_section = "", student_name = "";
+
+
+        result.moveToFirst();
+        while (!result.isAfterLast()) {
+
+            if (result.getString(result.getColumnIndex("NAME")) != null) {
+                student_name += result.getString(result.getColumnIndex("NAME"));
+                student_name += "\n";
+            }
+            result.moveToNext();
+
+            result.moveToFirst();
+            if (result.getString(result.getColumnIndex("DEPARTMENT")) != null) {
+                student_department += result.getString(result.getColumnIndex("DEPARTMENT"));
+                student_department += "\n";
+            }
+            result.moveToNext();
+
+
+            result.moveToFirst();
+            if (result.getString(result.getColumnIndex("YEAR")) != null) {
+                student_year += result.getString(result.getColumnIndex("YEAR"));
+                student_year += "\n";
+            }
+            result.moveToNext();
+
+
+            result.moveToFirst();
+            if (result.getString(result.getColumnIndex("SEMESTER")) != null) {
+                student_semester += result.getString(result.getColumnIndex("SEMESTER"));
+                student_semester += "\n";
+            }
+            result.moveToNext();
+
+
+            result.moveToFirst();
+            if (result.getString(result.getColumnIndex("SECTION")) != null) {
+                student_section += result.getString(result.getColumnIndex("SECTION"));
+                student_section += "\n";
+            }
+            result.moveToNext();
+
+        }
+
+        myName = student_name.trim();
+        myDept = student_department.trim();
+        myYear = student_year.trim();
+        mySemester = student_semester.trim();
+        mySection = student_section.trim();
+
+        View hView =  navigationView.getHeaderView(0);
+
+        TextView nav_name = (TextView)hView.findViewById(R.id.header_name);
+        nav_name.setText(myName);
+
+
+        TextView nav_dept = (TextView)hView.findViewById(R.id.header_dept);
+        nav_dept.setText(myDept);
+
+        TextView nav_year = (TextView)hView.findViewById(R.id.header_year);
+        nav_year.setText(myYear);
+
+        TextView nav_semester = (TextView)hView.findViewById(R.id.header_semester);
+        nav_semester.setText(mySemester);
+
+        TextView nav_section = (TextView)hView.findViewById(R.id.header_Section);
+        nav_section.setText(mySection);
+
+        CircleImageView circleImageView = (CircleImageView)hView.findViewById(R.id.header_image);
+        circleImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ResultCheckActivity.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
     }
+
 
     void setUpMyViewPager(ViewPager vp){
 
@@ -148,12 +252,16 @@ public class ResultCheckActivity extends AppCompatActivity implements Navigation
                 break;
 
             case R.id.my_details:
-                Toast.makeText(getApplicationContext(),"Class Details",Toast.LENGTH_SHORT).show();
+                Intent intent12 = new Intent(ResultCheckActivity.this, ClassDetails.class);
+                startActivity(intent12);
+                finish();
 
                 break;
 
             case R.id.quiz:
-                Toast.makeText(getApplicationContext(),"Quiz Reminder",Toast.LENGTH_SHORT).show();
+                Intent intent22 = new Intent(ResultCheckActivity.this, QuizReminder.class);
+                startActivity(intent22);
+                finish();
 
                 break;
 

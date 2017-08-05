@@ -16,6 +16,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class MenuActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     Toolbar toolbar;
@@ -151,6 +153,7 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
         TextView nav_name = (TextView)hView.findViewById(R.id.header_name);
         nav_name.setText(myName);
 
+
         TextView nav_dept = (TextView)hView.findViewById(R.id.header_dept);
         nav_dept.setText(myDept);
 
@@ -162,6 +165,15 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
 
         TextView nav_section = (TextView)hView.findViewById(R.id.header_Section);
         nav_section.setText(mySection);
+
+        CircleImageView circleImageView = (CircleImageView)hView.findViewById(R.id.header_image);
+        circleImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuActivity.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
     }
@@ -206,12 +218,16 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.my_details:
-                Toast.makeText(getApplicationContext(),"Class Details",Toast.LENGTH_SHORT).show();
+                Intent intent32 = new Intent(MenuActivity.this, ClassDetails.class);
+                startActivity(intent32);
+                finish();
 
                 break;
 
             case R.id.quiz:
-                Toast.makeText(getApplicationContext(),"Quiz Reminder",Toast.LENGTH_SHORT).show();
+                Intent intent12 = new Intent(MenuActivity.this, QuizReminder.class);
+                startActivity(intent12);
+                finish();
 
                 break;
 
@@ -228,7 +244,8 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.about:
-                Toast.makeText(getApplicationContext(),"About",Toast.LENGTH_SHORT).show();
+                Intent intent1 = new Intent(MenuActivity.this, BackupMark.class);
+                startActivity(intent1);
 
                 break;
 

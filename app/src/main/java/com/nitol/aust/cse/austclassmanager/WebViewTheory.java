@@ -190,7 +190,7 @@ public class WebViewTheory extends Fragment{
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
             if(url.contains(currentUrl)){
-                //do something
+
             }
             return true;
         }

@@ -3,31 +3,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/customshape">
+    android:background="@drawable/customshape"
+    android:padding="10dp">
 
 
     <TextView
         android:id="@+id/my_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="15dp"
         android:text="Math"
         android:textColor="#111"
         android:textStyle="bold"
-        android:textSize="22sp" />
+        android:textSize="22sp"
+        android:layout_alignParentTop="true" />
 
     <TextView
         android:id="@+id/my_details"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/my_title"
-        android:layout_below="@+id/my_title"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="13dp"
         android:text="Full Syllebus"
-        android:textSize="18sp" />
+        android:textColor="#111"
+        android:textSize="18sp"
+        android:layout_below="@+id/my_title"
+        android:layout_alignStart="@+id/my_title" />
 
     <TextView
         android:id="@+id/my_time"
@@ -35,6 +36,7 @@
         android:layout_height="wrap_content"
         android:text="8.00am"
         android:textSize="18sp"
+        android:textColor="#111"
         android:layout_below="@+id/my_details"
         android:layout_alignStart="@+id/my_details" />
 
@@ -44,6 +46,7 @@
         android:layout_height="wrap_content"
         android:text="31-12-1995"
         android:textSize="18sp"
+        android:textColor="#111"
         android:layout_below="@+id/my_time"
         android:layout_alignStart="@+id/my_time" />
 
@@ -52,8 +55,19 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         app:srcCompat="@drawable/delete"
-        android:tint="#797979"
-        android:layout_above="@+id/my_date"
-        android:layout_alignEnd="@+id/my_details" />
+        android:tint="#504b4b"
+        android:layout_marginEnd="11dp"
+        android:layout_alignBottom="@+id/my_date"
+        android:layout_alignParentEnd="true" />
+
+    <!--<ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        app:srcCompat="@drawable/alerm2"
+        android:layout_alignTop="@+id/delete_image"
+        android:layout_alignParentStart="true"
+        android:tint="#797979"/>-->
 
 </RelativeLayout>

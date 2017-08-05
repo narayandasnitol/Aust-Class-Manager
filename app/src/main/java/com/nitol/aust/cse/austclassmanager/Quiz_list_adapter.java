@@ -1,6 +1,9 @@
 package com.nitol.aust.cse.austclassmanager;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +28,8 @@ public class Quiz_list_adapter extends BaseAdapter{
     ArrayList<String> aL7 = new ArrayList<>();
 
     QuizDatabaseHelper myDb;
+    Intent intent;
+    AlarmManager alarmManager;
 
 
 
@@ -67,7 +72,8 @@ public class Quiz_list_adapter extends BaseAdapter{
 
     public class MyHolder{
         TextView tv1, tv2, tv3, tv4;
-        ImageView iv;
+        ImageView iv, iv2;
+
 
     }
 
@@ -85,6 +91,7 @@ public class Quiz_list_adapter extends BaseAdapter{
         myHolder.tv3 = (TextView) myView.findViewById(R.id.my_time);
         myHolder.tv4 = (TextView) myView.findViewById(R.id.my_date);
         myHolder.iv = (ImageView) myView.findViewById(R.id.delete_image);
+        //myHolder.iv2 = (ImageView) myView.findViewById(R.id.imageView3);
 
 
         int hourFinal, minuteFinal;
@@ -127,25 +134,35 @@ public class Quiz_list_adapter extends BaseAdapter{
         String d = String.valueOf(dayFinal);
 
 
-        myHolder.tv1.setText(aL1.get(position));
-        myHolder.tv2.setText(aL2.get(position));
-        myHolder.tv3.setText(final_time);
-        myHolder.tv4.setText(d+"-"+mo+"-"+y);
+        myHolder.tv1.setText("Subject: "+aL1.get(position));
+        myHolder.tv2.setText("Details: "+aL2.get(position));
+        myHolder.tv3.setText("Time: "+final_time);
+        myHolder.tv4.setText("Date: "+d+"-"+mo+"-"+y);
         myHolder.iv.setImageResource(R.drawable.delete);
+       // myHolder.iv2.setImageResource(R.drawable.alerm2);
 
 
-
-        myView.setOnClickListener(new View.OnClickListener() {
+        myHolder.iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String s = aL1.get(position);
                 Cursor data = myDb.getId(String.valueOf(s));
 
                 while(data.moveToNext()) {
                     String d = data.getString(0);
-
                     Integer deletedRow = myDb.deleteData(String.valueOf(d));
+
+
+                    AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+                    Intent myIntent = new Intent(context, NotificationReceiver.class);
+                    PendingIntent pendingIntent = PendingIntent.getBroadcast(
+                           context, Integer.parseInt(d), myIntent,     PendingIntent.FLAG_UPDATE_CURRENT);
+
+                    alarmManager.cancel(pendingIntent);
+
+
+
+
 
                     aL1.remove(position);
                     notifyDataSetChanged();
@@ -156,8 +173,6 @@ public class Quiz_list_adapter extends BaseAdapter{
                         Toast.makeText(context, "Data not Deleted !", Toast.LENGTH_LONG).show();
                     }
                 }
-
-
             }
         });
 
