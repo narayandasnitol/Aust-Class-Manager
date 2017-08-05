@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,7 +21,7 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
-public class SetQuiz extends AppCompatActivity implements
+public class SetQuiz_Activity extends AppCompatActivity implements
         DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener{
 
     Toolbar toolbar;
@@ -57,8 +58,10 @@ public class SetQuiz extends AppCompatActivity implements
         String dd = String.valueOf(c.get(Calendar.DAY_OF_MONTH));
 
 
-        int hh = c.get(Calendar.HOUR);
+        int hh = c.get(Calendar.HOUR_OF_DAY);
         int mmm = c.get(Calendar.MINUTE);
+
+        Log.d("check", String.valueOf(hh));
 
         String timeSet = "";
         if (hh > 12) {
@@ -103,8 +106,8 @@ public class SetQuiz extends AppCompatActivity implements
                 day = c.get(Calendar.DAY_OF_MONTH);
 
 
-                DatePickerDialog datePickerDialog = new DatePickerDialog(SetQuiz.this,R.style.DatePickerDialogTheme,
-                        SetQuiz.this, year,month, day);
+                DatePickerDialog datePickerDialog = new DatePickerDialog(SetQuiz_Activity.this,R.style.DatePickerDialogTheme,
+                        SetQuiz_Activity.this, year,month, day);
                 datePickerDialog.show();
             }
         });
@@ -147,11 +150,11 @@ public class SetQuiz extends AppCompatActivity implements
                     AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
                     alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar2.getTimeInMillis(),
-                            AlarmManager.INTERVAL_FIFTEEN_MINUTES, pendingIntent);
+                            AlarmManager.INTERVAL_HOUR, pendingIntent);
 
 
 
-                    Intent intent2 = new Intent(SetQuiz.this, QuizReminder.class);
+                    Intent intent2 = new Intent(SetQuiz_Activity.this, QuizReminder_Activity.class);
                     startActivity(intent2);
                     finish();
                 }
@@ -179,8 +182,8 @@ public class SetQuiz extends AppCompatActivity implements
         hour = c.get(Calendar.HOUR_OF_DAY);
         minute = c.get(Calendar.MINUTE);
 
-        TimePickerDialog timePickerDialog = new TimePickerDialog( SetQuiz.this,
-                R.style.TimePickerDialogTheme, SetQuiz.this,
+        TimePickerDialog timePickerDialog = new TimePickerDialog( SetQuiz_Activity.this,
+                R.style.TimePickerDialogTheme, SetQuiz_Activity.this,
                 hour, minute , false);
 
         timePickerDialog.show();
@@ -237,7 +240,7 @@ public class SetQuiz extends AppCompatActivity implements
         int id = item.getItemId();
 
         if(id == R.id.tool_settings){
-            Intent intent = new Intent(SetQuiz.this, Settings.class);
+            Intent intent = new Intent(SetQuiz_Activity.this, Settings_Activity.class);
             startActivity(intent);
 
         }

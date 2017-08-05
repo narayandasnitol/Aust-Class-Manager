@@ -3,8 +3,8 @@
     package="com.nitol.aust.cse.austclassmanager">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="com.android.alarm.permission.SET_ALERM"/>
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="com.android.alarm.permission.SET_ALERM" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/project_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".Main_Activity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,33 +37,63 @@
 
         <activity
             android:name=".ClassRoutineActivity"
-            android:label="Class Routine" />
+            android:label="Class Routine"
+            android:screenOrientation="portrait" />
         <activity
-            android:name=".MenuActivity"
-            android:label="Menu" />
+            android:name=".Menu_Activity"
+            android:label="Home"
+            android:screenOrientation="portrait" />
         <activity
-            android:name=".ProfileActivity"
-            android:label="Profile" />
+            android:name=".Profile_Activity"
+            android:label="Profile"
+            android:screenOrientation="portrait" />
         <activity
-            android:name=".QuizReminder"
-            android:label="Quiz Reminder" />
+            android:name=".QuizReminder_Activity"
+            android:label="Quiz Reminder"
+            android:screenOrientation="portrait" />
         <activity
-            android:name=".CgpaCalculator"
-            android:label="CGPA Calculator" />
-        <activity android:name=".Signup" />
-        <activity
-            android:name=".Settings"
-            android:label="Settings" />
-        <activity
-            android:name=".ResultCheckActivity"
-            android:label="Results and Information" />
-        <activity
-            android:name=".SetQuiz"
-            android:label="Set Quiz" />
-        <activity android:name=".ClassDetails" />
-        <activity android:name=".BackupMark"></activity>
+            android:name=".CgpaCalculator_Activity"
+            android:label="CGPA Calculator"
+            android:screenOrientation="portrait" />
 
-        <receiver android:name=".NotificationReceiver"/>
+        <activity
+            android:name=".Signup_Activity"
+            android:screenOrientation="portrait">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+        </activity>
+
+        <activity
+            android:name=".Settings_Activity"
+            android:label="Settings"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ResultInformationActivity"
+            android:label="Results and Information"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SetQuiz_Activity"
+            android:label="Set Quiz"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ClassDetails_Activity"
+            android:label="Class Details"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".BackupMark_Activity"
+            android:label="Backup Marks Calculator"
+            android:screenOrientation="portrait" />
+
+        <receiver android:name=".NotificationReceiver" />
+
+        <activity android:name=".Credit_activity"
+            android:label="Credit"/>
+
 
     </application>
 

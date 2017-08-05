@@ -17,7 +17,7 @@ public class WebViewTheory extends Fragment{
     View v2;
     WebView wb;
     SwipeRefreshLayout mySwipeRefreshLayout;
-    DatabaseHelper myDb;
+    ProfileDatabaseHelper myDb;
     ClassRoutineHelper cR;
 
 
@@ -35,7 +35,7 @@ public class WebViewTheory extends Fragment{
         wb = (WebView) v2.findViewById(R.id.webView_theory);
         mySwipeRefreshLayout = (SwipeRefreshLayout) v2.findViewById(R.id.swiperefresh);
 
-        myDb = new DatabaseHelper(getContext());
+        myDb = new ProfileDatabaseHelper(getContext());
         cR = new ClassRoutineHelper();
 
 

@@ -5,29 +5,18 @@
     android:orientation="vertical"
     android:gravity="top">
 
-    <TextView
-        android:id="@+id/textView_routine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Class Routine"
-        android:layout_gravity="center"
-        android:textSize="28sp"
-        android:textColor="#111"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp" />
-
 
     <TextView
         android:id="@+id/textView_dept"
         android:layout_width="match_parent"
-        android:gravity="center"
-        android:background="#ef4e4e"
         android:layout_height="wrap_content"
         android:layout_marginTop="17dp"
+        android:background="@drawable/signup_button"
+        android:gravity="center"
         android:text="TextView"
-        android:textColor="#fff"
+        android:textColor="#000000"
         android:textSize="30sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,14 +24,14 @@
         android:orientation="horizontal"
         android:gravity="center"
         android:layout_marginTop="13dp"
-        android:background="#3ca64d">
+        android:background="@drawable/signup_button">
 
         <TextView
             android:id="@+id/year_routine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Year"
-            android:textColor="#ffffff"
+            android:textColor="#000000"
             android:textStyle="bold"
             android:textSize="18sp"
             android:layout_marginRight="29dp"
@@ -53,7 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Semester"
-            android:textColor="#ffffff"
+            android:textColor="#000000"
             android:textStyle="bold"
             android:textSize="18sp"
             android:layout_marginLeft="7dp"
@@ -64,7 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Section"
-            android:textColor="#ffffff"
+            android:textColor="#0a0a0a"
             android:textStyle="bold"
             android:textSize="18sp"
             android:layout_marginLeft="30dp"

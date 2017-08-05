@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class QuizReminder extends AppCompatActivity
+public class QuizReminder_Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
     FloatingActionButton fabButton;
@@ -32,7 +32,7 @@ public class QuizReminder extends AppCompatActivity
 
     ListView lv;
     QuizDatabaseHelper myDb;
-    DatabaseHelper myDb2;
+    ProfileDatabaseHelper myDb2;
 
     ArrayList<String> arrayList = new ArrayList<>();
     ArrayList<String> arrayList2 = new ArrayList<>();
@@ -57,7 +57,7 @@ public class QuizReminder extends AppCompatActivity
 
         lv =  (ListView) findViewById(R.id.custom_listView);
         myDb = new QuizDatabaseHelper(this);
-        myDb2 = new DatabaseHelper(this);
+        myDb2 = new ProfileDatabaseHelper(this);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -76,7 +76,7 @@ public class QuizReminder extends AppCompatActivity
         fabButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(QuizReminder.this, SetQuiz.class);
+                Intent intent = new Intent(QuizReminder_Activity.this, SetQuiz_Activity.class);
                 startActivity(intent);
                 finish();
             }
@@ -99,7 +99,7 @@ public class QuizReminder extends AppCompatActivity
                 arrayList7.add(data.getString(7));
 
 
-                Quiz_list_adapter customAdapter = new Quiz_list_adapter(QuizReminder.this,
+                CustomQuizAdapter customAdapter = new CustomQuizAdapter(QuizReminder_Activity.this,
                         arrayList, arrayList2, arrayList3, arrayList4, arrayList5, arrayList6, arrayList7);
                 customAdapter.notifyDataSetChanged();
                 lv.setAdapter(customAdapter);
@@ -191,7 +191,7 @@ public class QuizReminder extends AppCompatActivity
         circleImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(QuizReminder.this, ProfileActivity.class);
+                Intent intent = new Intent(QuizReminder_Activity.this, Profile_Activity.class);
                 startActivity(intent);
             }
         });
@@ -221,27 +221,27 @@ public class QuizReminder extends AppCompatActivity
 
         switch (id){
             case R.id.home:
-                Intent intent1 = new Intent(QuizReminder.this, MenuActivity.class);
+                Intent intent1 = new Intent(QuizReminder_Activity.this, Menu_Activity.class);
                 startActivity(intent1);
                 finish();
 
                 break;
 
             case R.id.routine:
-                Intent intent22 = new Intent(QuizReminder.this, ClassRoutineActivity.class);
+                Intent intent22 = new Intent(QuizReminder_Activity.this, ClassRoutineActivity.class);
                 startActivity(intent22);
                 finish();
                 break;
 
             case R.id.cgpa:
-                Intent intent2 = new Intent(QuizReminder.this, CgpaCalculator.class);
+                Intent intent2 = new Intent(QuizReminder_Activity.this, CgpaCalculator_Activity.class);
                 startActivity(intent2);
                 finish();
 
                 break;
 
             case R.id.my_details:
-                Intent intent222 = new Intent(QuizReminder.this, ClassDetails.class);
+                Intent intent222 = new Intent(QuizReminder_Activity.this, ClassDetails_Activity.class);
                 startActivity(intent222);
                 finish();
 
@@ -252,7 +252,7 @@ public class QuizReminder extends AppCompatActivity
                 break;
 
             case R.id.result:
-                Intent intent3 = new Intent(QuizReminder.this, ResultCheckActivity.class);
+                Intent intent3 = new Intent(QuizReminder_Activity.this, ResultInformationActivity.class);
                 startActivity(intent3);
                 finish();
 
@@ -260,20 +260,28 @@ public class QuizReminder extends AppCompatActivity
 
 
             case R.id.profile:
-                Intent intent6 = new Intent(QuizReminder.this, ProfileActivity.class);
+                Intent intent6 = new Intent(QuizReminder_Activity.this, Profile_Activity.class);
                 startActivity(intent6);
                 finish();
 
                 break;
 
             case R.id.about:
-                Toast.makeText(getApplicationContext(),"About",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(QuizReminder_Activity.this, Credit_activity.class);
+                startActivity(intent);
 
                 break;
 
             case R.id.settings:
-                Intent intent4 = new Intent(QuizReminder.this, Settings.class);
+                Intent intent4 = new Intent(QuizReminder_Activity.this, Settings_Activity.class);
                 startActivity(intent4);
+                finish();
+
+                break;
+
+            case R.id.backup:
+                Intent intent66 = new Intent(QuizReminder_Activity.this, BackupMark_Activity.class);
+                startActivity(intent66);
                 finish();
 
                 break;
@@ -298,13 +306,14 @@ public class QuizReminder extends AppCompatActivity
         int id = item.getItemId();
 
         if(id == R.id.tool_settings){
-            Intent intent = new Intent(QuizReminder.this, Settings.class);
+            Intent intent = new Intent(QuizReminder_Activity.this, Settings_Activity.class);
             startActivity(intent);
 
         }
         else if(id == R.id.tool_about){
 
-            Toast.makeText(getApplicationContext(),"This is About !", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(QuizReminder_Activity.this, Credit_activity.class);
+            startActivity(intent);
 
         }
 

@@ -15,7 +15,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import uk.co.senab.photoview.PhotoViewAttacher;
@@ -23,7 +22,7 @@ import uk.co.senab.photoview.PhotoViewAttacher;
 public class ClassRoutineActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     TextView yr, sem, sec, noRes, dept;
-    DatabaseHelper myDb;
+    ProfileDatabaseHelper myDb;
     ImageView routinePic;
 
     ClassRoutineHelper cR;
@@ -44,7 +43,7 @@ public class ClassRoutineActivity extends AppCompatActivity implements Navigatio
         setContentView(R.layout.navi_draw_class_routine);
 
 
-        myDb = new DatabaseHelper(this);
+        myDb = new ProfileDatabaseHelper(this);
         cR = new ClassRoutineHelper();
 
 
@@ -130,7 +129,7 @@ public class ClassRoutineActivity extends AppCompatActivity implements Navigatio
         yr.setText(myYear);
         sem.setText(mySemester);
         sec.setText(mySection);
-        dept.setText(myDept);
+        dept.setText(myDept+" Department");
 
 
         String routine = cR.getRoutine(myDept,myYear,mySemester,mySection);
@@ -262,7 +261,7 @@ public class ClassRoutineActivity extends AppCompatActivity implements Navigatio
         circleImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ClassRoutineActivity.this, ProfileActivity.class);
+                Intent intent = new Intent(ClassRoutineActivity.this, Profile_Activity.class);
                 startActivity(intent);
             }
         });
@@ -289,7 +288,7 @@ public class ClassRoutineActivity extends AppCompatActivity implements Navigatio
 
         switch (id){
             case R.id.home:
-                Intent intent1 = new Intent(ClassRoutineActivity.this, MenuActivity.class);
+                Intent intent1 = new Intent(ClassRoutineActivity.this, Menu_Activity.class);
                 startActivity(intent1);
                 finish();
 
@@ -300,28 +299,28 @@ public class ClassRoutineActivity extends AppCompatActivity implements Navigatio
                 break;
 
             case R.id.cgpa:
-                Intent intent2 = new Intent(ClassRoutineActivity.this, CgpaCalculator.class);
+                Intent intent2 = new Intent(ClassRoutineActivity.this, CgpaCalculator_Activity.class);
                 startActivity(intent2);
                 finish();
 
                 break;
 
             case R.id.my_details:
-                Intent intent22 = new Intent(ClassRoutineActivity.this, ClassDetails.class);
+                Intent intent22 = new Intent(ClassRoutineActivity.this, ClassDetails_Activity.class);
                 startActivity(intent22);
                 finish();
 
                 break;
 
             case R.id.quiz:
-                Intent intent21 = new Intent(ClassRoutineActivity.this, QuizReminder.class);
+                Intent intent21 = new Intent(ClassRoutineActivity.this, QuizReminder_Activity.class);
                 startActivity(intent21);
                 finish();
 
                 break;
 
             case R.id.result:
-                Intent intent3 = new Intent(ClassRoutineActivity.this, ResultCheckActivity.class);
+                Intent intent3 = new Intent(ClassRoutineActivity.this, ResultInformationActivity.class);
                 startActivity(intent3);
                 finish();
 
@@ -329,20 +328,28 @@ public class ClassRoutineActivity extends AppCompatActivity implements Navigatio
 
 
             case R.id.profile:
-                Intent intent6 = new Intent(ClassRoutineActivity.this, ProfileActivity.class);
+                Intent intent6 = new Intent(ClassRoutineActivity.this, Profile_Activity.class);
                 startActivity(intent6);
                 finish();
 
                 break;
 
             case R.id.about:
-                Toast.makeText(getApplicationContext(),"About",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(ClassRoutineActivity.this, Credit_activity.class);
+                startActivity(intent);
 
                 break;
 
             case R.id.settings:
-                Intent intent4 = new Intent(ClassRoutineActivity.this, Settings.class);
+                Intent intent4 = new Intent(ClassRoutineActivity.this, Settings_Activity.class);
                 startActivity(intent4);
+                finish();
+
+                break;
+
+            case R.id.backup:
+                Intent intent66 = new Intent(ClassRoutineActivity.this, BackupMark_Activity.class);
+                startActivity(intent66);
                 finish();
 
                 break;
@@ -367,13 +374,14 @@ public class ClassRoutineActivity extends AppCompatActivity implements Navigatio
         int id = item.getItemId();
 
         if(id == R.id.tool_settings){
-            Intent intent = new Intent(ClassRoutineActivity.this, Settings.class);
+            Intent intent = new Intent(ClassRoutineActivity.this, Settings_Activity.class);
             startActivity(intent);
 
         }
         else if(id == R.id.tool_about){
 
-            Toast.makeText(getApplicationContext(),"This is About !", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(ClassRoutineActivity.this, Credit_activity.class);
+            startActivity(intent);
 
         }
 

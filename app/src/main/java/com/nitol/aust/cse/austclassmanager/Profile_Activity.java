@@ -10,10 +10,10 @@ import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class ProfileActivity extends AppCompatActivity {
+public class Profile_Activity extends AppCompatActivity {
 
     Toolbar toolbar;
-    DatabaseHelper myDb;
+    ProfileDatabaseHelper myDb;
     ListView lv;
 
     String myDept;
@@ -28,7 +28,7 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
 
-        myDb = new DatabaseHelper(this);
+        myDb = new ProfileDatabaseHelper(this);
         lv = (ListView) findViewById(R.id.listViewProfile);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -119,7 +119,7 @@ public class ProfileActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if(id == R.id.tool_settings){
-            Intent intent = new Intent(ProfileActivity.this, Settings.class);
+            Intent intent = new Intent(Profile_Activity.this, Settings_Activity.class);
             startActivity(intent);
 
         }

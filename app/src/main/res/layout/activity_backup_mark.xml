@@ -2,19 +2,29 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#e6e6e6">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/setabs3">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:id="@+id/toolbar"
+        android:background="@color/colorPrimaryDark"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="87dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="88dp"
         android:text="Quiz1: "
         android:textStyle="bold"
         android:textColor="#912424"
-        android:textSize="22sp"
+        android:textSize="20sp"
         android:layout_below="@+id/textView23"
         android:layout_alignParentStart="true" />
 
@@ -36,7 +46,7 @@
         android:textStyle="bold"
         android:text="Quiz2:"
         android:textColor="#912424"
-        android:textSize="22sp"
+        android:textSize="20sp"
         android:layout_below="@+id/textView8"
         android:layout_alignStart="@+id/textView8" />
 
@@ -47,7 +57,6 @@
         android:ems="10"
         android:hint="marks"
         android:inputType="number"
-        android:layout_alignBaseline="@+id/textView9"
         android:layout_alignBottom="@+id/textView9"
         android:layout_alignStart="@+id/q1" />
 
@@ -55,12 +64,12 @@
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="19dp"
         android:text="Quiz3:"
         android:textColor="#912424"
         android:textStyle="bold"
-        android:textSize="22sp"
-        android:layout_below="@+id/q2"
+        android:textSize="20sp"
+        android:layout_below="@+id/textView9"
         android:layout_alignStart="@+id/textView9" />
 
     <EditText
@@ -70,7 +79,6 @@
         android:ems="10"
         android:inputType="number"
         android:hint="marks"
-        android:layout_alignBaseline="@+id/textView10"
         android:layout_alignBottom="@+id/textView10"
         android:layout_alignStart="@+id/q2" />
 
@@ -81,15 +89,14 @@
         android:text="Quiz4:"
         android:textColor="#912424"
         android:textStyle="bold"
-        android:textSize="22sp"
-        android:layout_alignTop="@+id/q4"
+        android:textSize="20sp"
+        android:layout_alignBottom="@+id/q4"
         android:layout_alignStart="@+id/textView10" />
 
     <EditText
         android:id="@+id/q4"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
         android:ems="10"
         android:inputType="number"
         android:hint="marks"
@@ -101,11 +108,11 @@
         android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
         android:text="Attendance:"
         android:textColor="#912424"
-        android:textSize="22sp"
-        android:layout_below="@+id/q4"
+        android:textSize="20sp"
+        android:layout_marginTop="21dp"
+        android:layout_below="@+id/textView11"
         android:layout_alignStart="@+id/textView11" />
 
     <EditText
@@ -115,16 +122,15 @@
         android:ems="10"
         android:inputType="number"
         android:hint="marks"
-        android:layout_alignBaseline="@+id/textView15"
         android:layout_alignBottom="@+id/textView15"
         android:layout_alignStart="@+id/q4" />
 
     <Button
         android:id="@+id/btn_cal"
-        android:layout_width="120dp"
+        android:layout_width="90dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/mybutton"
-        android:textColor="#fff"
+        android:background="@drawable/button_two"
+        android:textColor="#ffffff"
         android:textStyle="bold"
         android:text="Calculate"
         android:layout_marginBottom="22dp"
@@ -136,27 +142,16 @@
         android:layout_width="match_parent"
         android:gravity="center"
         android:layout_height="wrap_content"
-        android:textColor="#ffffff"
+        android:textColor="#000000"
         android:padding="5dp"
-        android:text="Backup Mark"
-        android:background="#b355af"
+        android:textStyle="bold"
+        android:text="Backup Marks"
+        android:background="@drawable/signup_button"
         android:textSize="28sp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true" />
 
-    <TextView
-        android:id="@+id/textView20"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#3b923f"
-        android:padding="5dp"
-        android:gravity="center"
-        android:text="Calculate Backup Marks"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        android:textColor="#ffffff"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+
 
     <TextView
         android:id="@+id/textView21"
@@ -166,9 +161,9 @@
         android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="#941a1a"
-        android:layout_marginTop="13dp"
-        android:layout_below="@+id/textView20"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/toolbar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
 
     <TextView
         android:id="@+id/textView23"
@@ -182,5 +177,30 @@
         android:layout_below="@+id/textView21"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="8dp" />
+
+    <CheckBox
+        android:id="@+id/check10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="Out of 10"
+        android:textSize="20sp"
+        android:onClick="onCheckboxClicked"
+        android:layout_alignBaseline="@+id/check20"
+        android:layout_alignBottom="@+id/check20"
+        android:layout_toStartOf="@+id/btn_cal" />
+
+    <CheckBox
+        android:id="@+id/check20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="Out of 20"
+        android:textSize="20sp"
+        android:onClick="onCheckboxClicked"
+        android:layout_marginBottom="11dp"
+        android:layout_above="@+id/q1"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="15dp" />
 
 </RelativeLayout>

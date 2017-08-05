@@ -10,11 +10,11 @@ import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
 
 
-public class year_change extends DialogFragment {
+public class ProfileSectionChange extends DialogFragment {
 
-    final CharSequence[] items = {"1st Year", "2nd Year", "3rd Year", "4th Year"};
-    String selection = "";
-    DatabaseHelper myDb;
+    final CharSequence[] items = {"Section A", "Section B", "Section C", "Section D"};
+    String selection="";
+    ProfileDatabaseHelper myDb;
 
     String myDept;
     String myYear;
@@ -29,25 +29,24 @@ public class year_change extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-        myDb = new DatabaseHelper(getContext());
+        myDb = new ProfileDatabaseHelper(getContext());
         getAllData();
 
-        if(myYear.trim().equals("1st Year")){
+        if(mySection.trim().equals("Section A")){
             choice= 0;
         }
-        else if(myYear.trim().equals("2nd Year")){
+        else if(mySection.trim().equals("Section B")){
             choice = 1;
         }
-        else if(myYear.trim().equals("3rd Year")){
+        else if(mySection.trim().equals("Section C")){
             choice = 2;
         }
-        else if(myYear.trim().equals("4th Year")){
+        else if(mySection.trim().equals("Section D")){
             choice = 3;
         }
 
-
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.MyDialogTheme);
-        builder.setTitle("Select your Academic Year").setSingleChoiceItems(items, choice,
+        builder.setTitle("Select your Section").setSingleChoiceItems(items, choice,
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -81,16 +80,16 @@ public class year_change extends DialogFragment {
 
                 if(selection.isEmpty()){
                     if(choice == 0){
-                        myYear = (String) items[choice];
+                        mySection = (String) items[choice];
                     }
                     else if(choice == 1){
-                        myYear = (String) items[choice];
+                        mySection = (String) items[choice];
                     }
                     else if(choice == 2){
-                        myYear = (String) items[choice];
+                        mySection = (String) items[choice];
                     }
                     else if(choice == 3){
-                        myYear = (String) items[choice];
+                        mySection = (String) items[choice];
                     }
 
                     Toast.makeText(getContext(),"Data not updated!",Toast.LENGTH_SHORT).show();
@@ -98,9 +97,10 @@ public class year_change extends DialogFragment {
                 }
 
                 else{
-                    myYear = selection;
+                    mySection = selection;
                     Toast.makeText(getContext(),"Data updated!",Toast.LENGTH_SHORT).show();
                 }
+
 
                 updateAll();
 

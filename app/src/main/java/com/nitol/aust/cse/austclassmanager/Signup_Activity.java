@@ -18,11 +18,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Signup extends AppCompatActivity {
+public class Signup_Activity extends AppCompatActivity {
 
     Button signupButton;
     TextView tv;
-    DatabaseHelper myDb;
+    ProfileDatabaseHelper myDb;
     AppCompatEditText username;
     LinearLayout LL;
     TextInputLayout userLayout;
@@ -37,14 +37,14 @@ public class Signup extends AppCompatActivity {
         setContentView(R.layout.signup_layout);
 
 
-        myDb = new DatabaseHelper(this);
+        myDb = new ProfileDatabaseHelper(this);
         signupButton = (Button) findViewById(R.id.btn_signup);
 
 
         Cursor result = myDb.getAllData();
 
         if(result.getCount() >= 1){
-            Intent intent = new Intent(Signup.this, MenuActivity.class);
+            Intent intent = new Intent(Signup_Activity.this, Menu_Activity.class);
             startActivity(intent);
             finish();
         }
@@ -61,7 +61,7 @@ public class Signup extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                AlertDialog.Builder mBuilder = new  AlertDialog.Builder(Signup.this);
+                AlertDialog.Builder mBuilder = new  AlertDialog.Builder(Signup_Activity.this);
                 View mView = getLayoutInflater().inflate(R.layout.custom_alert_signup, null);
 
 
@@ -136,7 +136,7 @@ public class Signup extends AppCompatActivity {
 
                             myDb.insertData(myName, myDept, myYear, mySemester, mySection);
 
-                            Intent intent = new Intent(Signup.this, MenuActivity.class);
+                            Intent intent = new Intent(Signup_Activity.this, Menu_Activity.class);
                             startActivity(intent);
                             finish();
                         }

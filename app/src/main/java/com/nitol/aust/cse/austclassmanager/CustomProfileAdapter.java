@@ -13,7 +13,7 @@ public class CustomProfileAdapter extends BaseAdapter{
     Context context;
     private static LayoutInflater  inflater = null;
 
-    public CustomProfileAdapter(ProfileActivity mainAct, String[] name, String[] name2){
+    public CustomProfileAdapter(Profile_Activity mainAct, String[] name, String[] name2){
         text = name;
         text2 = name2;
 

@@ -20,14 +20,14 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class Settings extends AppCompatActivity{
+public class Settings_Activity extends AppCompatActivity{
 
     ListView lv;
     Toolbar toolbar;
     AppCompatEditText username;
     LinearLayout LL;
     TextInputLayout userLayout;
-    DatabaseHelper myDb;
+    ProfileDatabaseHelper myDb;
     Button update;
 
     String myDept;
@@ -36,10 +36,10 @@ public class Settings extends AppCompatActivity{
     String mySection;
     String myName;
 
-    department_change dp;
-    year_change cp;
-    semester_change sp;
-    section_change sc;
+    ProfileDepartmentChange dp;
+    ProfileYearChange cp;
+    ProfileSemesterChange sp;
+    ProfileSectionChange sc;
 
 
     @Override
@@ -48,7 +48,7 @@ public class Settings extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        myDb = new DatabaseHelper(this);
+        myDb = new ProfileDatabaseHelper(this);
 
         lv = (ListView) findViewById(R.id.settings_listview);
 
@@ -68,7 +68,7 @@ public class Settings extends AppCompatActivity{
 
                 if(item[position].equals("Change Name")){
 
-                    AlertDialog.Builder mBuilder = new  AlertDialog.Builder(Settings.this);
+                    AlertDialog.Builder mBuilder = new  AlertDialog.Builder(Settings_Activity.this);
                     View mView = getLayoutInflater().inflate(R.layout.change_name, null);
 
                     username = (AppCompatEditText) mView.findViewById(R.id.username_TextField);
@@ -143,23 +143,23 @@ public class Settings extends AppCompatActivity{
 
                 else if(item[position].equals("Change Department")){
 
-                    dp = new department_change();
+                    dp = new ProfileDepartmentChange();
                     dp.show(getSupportFragmentManager(),"dp");
 
                 }
 
                 else if(item[position].equals("Change Academic Year")){
-                    cp = new year_change();
+                    cp = new ProfileYearChange();
                     cp.show(getSupportFragmentManager(),"cp");
                 }
 
                 else if(item[position].equals("Change Semester")){
-                    sp = new semester_change();
+                    sp = new ProfileSemesterChange();
                     sp.show(getSupportFragmentManager(),"sp");
                 }
 
                 else if(item[position].equals("Change Section")){
-                    sc = new section_change();
+                    sc = new ProfileSectionChange();
                     sc.show(getSupportFragmentManager(),"sc");
                 }
 
@@ -239,7 +239,7 @@ public class Settings extends AppCompatActivity{
         if(isUpdated) {
             Toast.makeText(getApplicationContext(), "Data Updated !", Toast.LENGTH_SHORT).show();
 
-            Intent intent = new Intent(Settings.this, Settings.class);
+            Intent intent = new Intent(Settings_Activity.this, Settings_Activity.class);
             startActivity(intent);
             finish();
         }

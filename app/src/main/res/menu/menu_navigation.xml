@@ -45,6 +45,12 @@
             android:checkable="false"
             android:icon="@drawable/nprofile"/>
 
+        <item
+            android:title="Backup Marks Calculator"
+            android:id="@+id/backup"
+            android:checkable="false"
+            android:icon="@drawable/backup"/>
+
     </group>
 
 

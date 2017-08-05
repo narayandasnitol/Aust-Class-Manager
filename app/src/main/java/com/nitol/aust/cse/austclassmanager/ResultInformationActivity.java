@@ -5,7 +5,12 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,16 +19,21 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class MenuActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class ResultInformationActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
+    private TabLayout t1;
+    private ViewPager vp1;
     Toolbar toolbar;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
-    DatabaseHelper myDb;
+
+    ProfileDatabaseHelper myDb;
 
     String myDept;
     String myYear;
@@ -34,62 +44,33 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.navi_draw_menu);
+        setContentView(R.layout.navi_draw_result);
+
+        t1 = (TabLayout) findViewById(R.id.tab1);
+        vp1 = (ViewPager) findViewById(R.id.ViewPager1);
+
+
+        setUpMyViewPager(vp1);
+        t1.setupWithViewPager(vp1);
+
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout) ;
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
-
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle
                 (this,drawerLayout,toolbar, R.string.open_drawer, R.string.close_drawer);
-
         drawerLayout.setDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
-
         navigationView.setNavigationItemSelectedListener(this);
-        navigationView.getMenu().getItem(0).setChecked(true);
+        navigationView.getMenu().getItem(5).setChecked(true);
 
-        myDb = new DatabaseHelper(this);
+        myDb = new ProfileDatabaseHelper(this);
 
 
         getAllData();
 
     }
-
-
-    public void classRoutine(View view) {
-        Intent intent = new Intent(MenuActivity.this, ClassRoutineActivity.class);
-        startActivity(intent);
-    }
-
-    public void cgpaCalculator(View view){
-        Intent intent = new Intent(MenuActivity.this, CgpaCalculator.class);
-        startActivity(intent);
-    }
-
-    public  void quizReminder(View view){
-        Intent intent = new Intent(MenuActivity.this, QuizReminder.class);
-        startActivity(intent);
-    }
-
-    public  void Settings(View view){
-        Intent intent= new Intent(MenuActivity.this, Settings.class);
-        startActivity(intent);
-    }
-
-    public void Result(View view){
-        Intent intent= new Intent(MenuActivity.this, ResultCheckActivity.class);
-        startActivity(intent);
-    }
-
-    public void classDetails(View view){
-        Intent intent= new Intent(MenuActivity.this, ClassDetails.class);
-        startActivity(intent);
-    }
-
-
 
     public void getAllData() {
 
@@ -170,13 +151,62 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
         circleImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MenuActivity.this, ProfileActivity.class);
+                Intent intent = new Intent(ResultInformationActivity.this, Profile_Activity.class);
                 startActivity(intent);
             }
         });
 
 
     }
+
+
+    void setUpMyViewPager(ViewPager vp){
+
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        viewPagerAdapter.addMyFragment(new WebViewEvents(),"News & Events");
+        viewPagerAdapter.addMyFragment(new WebViewAcademic(),"Academic Calendar");
+        viewPagerAdapter.addMyFragment(new WebViewTheory(),"Theory Results");
+        viewPagerAdapter.addMyFragment(new WebViewLab(),"Lab Results");
+        viewPagerAdapter.addMyFragment(new WebViewTeacher(),"Faculty Members");
+
+
+        vp.setAdapter(viewPagerAdapter);
+    }
+
+
+
+    class ViewPagerAdapter extends FragmentPagerAdapter {
+        private final List<Fragment> my_list = new ArrayList<Fragment>();
+        private final List<String> my_title = new ArrayList<String>();
+
+        public ViewPagerAdapter(FragmentManager fragmentManager) {
+            super(fragmentManager);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return my_list.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return my_list.size();
+        }
+
+
+        void addMyFragment(Fragment f, String title){
+            my_list.add(f);
+            my_title.add(title);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return my_title.get(position);
+        }
+
+    }
+
+
 
 
     @Override
@@ -189,69 +219,80 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
         else{
             super.onBackPressed();
         }
-    }
 
+    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         int id = item.getItemId();
 
-
         switch (id){
 
             case R.id.home:
-
-                break;
-
-            case R.id.routine:
-                Intent intent = new Intent(MenuActivity.this, ClassRoutineActivity.class);
-                startActivity(intent);
-
-
-                break;
-
-            case R.id.cgpa:
-                Intent intent2 = new Intent(MenuActivity.this, CgpaCalculator.class);
-                startActivity(intent2);
-
-                break;
-
-            case R.id.my_details:
-                Intent intent32 = new Intent(MenuActivity.this, ClassDetails.class);
-                startActivity(intent32);
+                Intent intent0 = new Intent(ResultInformationActivity.this, Menu_Activity.class);
+                startActivity(intent0);
                 finish();
 
                 break;
 
-            case R.id.quiz:
-                Intent intent12 = new Intent(MenuActivity.this, QuizReminder.class);
+            case R.id.routine:
+                Intent intent = new Intent(ResultInformationActivity.this, ClassRoutineActivity.class);
+                startActivity(intent);
+                finish();
+
+                break;
+
+            case R.id.cgpa:
+                Intent intent2 = new Intent(ResultInformationActivity.this, CgpaCalculator_Activity.class);
+                startActivity(intent2);
+                finish();
+
+                break;
+
+            case R.id.my_details:
+                Intent intent12 = new Intent(ResultInformationActivity.this, ClassDetails_Activity.class);
                 startActivity(intent12);
                 finish();
 
                 break;
 
-            case R.id.result:
-                Intent intent3 = new Intent(MenuActivity.this, ResultCheckActivity.class);
-                startActivity(intent3);
+            case R.id.quiz:
+                Intent intent22 = new Intent(ResultInformationActivity.this, QuizReminder_Activity.class);
+                startActivity(intent22);
+                finish();
 
                 break;
 
+            case R.id.result:
+
+                break;
+
+
             case R.id.profile:
-                Intent intent4 = new Intent(MenuActivity.this, ProfileActivity.class);
-                startActivity(intent4);
+                Intent intent3 = new Intent(ResultInformationActivity.this, Profile_Activity.class);
+                startActivity(intent3);
+                finish();
 
                 break;
 
             case R.id.about:
-                Intent intent1 = new Intent(MenuActivity.this, BackupMark.class);
-                startActivity(intent1);
+                Intent intent222 = new Intent(ResultInformationActivity.this, Credit_activity.class);
+                startActivity(intent222);
 
                 break;
 
             case R.id.settings:
-                Intent intent5 = new Intent(MenuActivity.this, Settings.class);
-                startActivity(intent5);
+                Intent intent4 = new Intent(ResultInformationActivity.this, Settings_Activity.class);
+                startActivity(intent4);
+                finish();
+
+                break;
+
+            case R.id.backup:
+                Intent intent66 = new Intent(ResultInformationActivity.this, BackupMark_Activity.class);
+                startActivity(intent66);
+                finish();
 
                 break;
 
@@ -264,12 +305,8 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
 
         getMenuInflater().inflate(R.menu.menu_tool,menu);
         return true;
@@ -281,13 +318,14 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if(id == R.id.tool_settings){
-            Intent intent3 = new Intent(MenuActivity.this, Settings.class);
-            startActivity(intent3);
+            Intent intent = new Intent(ResultInformationActivity.this, Settings_Activity.class);
+            startActivity(intent);
 
         }
         else if(id == R.id.tool_about){
 
-            Toast.makeText(getApplicationContext(),"This is About !", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(ResultInformationActivity.this, Credit_activity.class);
+            startActivity(intent);
 
         }
 
@@ -295,5 +333,6 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-}
 
+
+}

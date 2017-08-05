@@ -17,7 +17,7 @@ public class WebViewLab extends Fragment {
     View v3;
     WebView wb2;
 
-    DatabaseHelper myDb;
+    ProfileDatabaseHelper myDb;
     ClassRoutineHelper cR;
     SwipeRefreshLayout mySwipeRefreshLayout;
 
@@ -34,7 +34,7 @@ public class WebViewLab extends Fragment {
         wb2 = (WebView) v3.findViewById(R.id.webView_lab);
         mySwipeRefreshLayout = (SwipeRefreshLayout) v3.findViewById(R.id.swiperefresh);
 
-        myDb = new DatabaseHelper(getContext());
+        myDb = new ProfileDatabaseHelper(getContext());
         cR = new ClassRoutineHelper();
 
         getAllData();

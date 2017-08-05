@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/setabs3">
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
@@ -17,13 +18,14 @@
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Update Information"
-        android:textSize="32sp"
-        android:textColor="#ffffff"
-        android:textStyle="bold"
-        android:background="#eb4f4f"
+        android:background="@drawable/customshape"
         android:gravity="center"
-        android:padding="10dp"/>
+        android:padding="10dp"
+        android:fontFamily="casual"
+        android:text="Update Information"
+        android:textColor="#000000"
+        android:textSize="26sp"
+        android:textStyle="bold" />
 
     <ListView
         android:id="@+id/settings_listview"

@@ -10,11 +10,11 @@ import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
 
 
-public class department_change extends DialogFragment {
+public class ProfileYearChange extends DialogFragment {
 
-    final CharSequence[] items = {"Architecture", "EEE", "CSE", "ME", "TE", "CE", "IPE", "BBA"};
+    final CharSequence[] items = {"1st Year", "2nd Year", "3rd Year", "4th Year"};
     String selection = "";
-    DatabaseHelper myDb;
+    ProfileDatabaseHelper myDb;
 
     String myDept;
     String myYear;
@@ -24,40 +24,30 @@ public class department_change extends DialogFragment {
 
     int choice;
 
+
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-        myDb = new DatabaseHelper(getContext());
+        myDb = new ProfileDatabaseHelper(getContext());
         getAllData();
 
-        if(myDept.trim().equals("Architecture")){
+        if(myYear.trim().equals("1st Year")){
             choice= 0;
         }
-        else if(myDept.trim().equals("EEE")){
+        else if(myYear.trim().equals("2nd Year")){
             choice = 1;
         }
-        else if(myDept.trim().equals("CSE")){
+        else if(myYear.trim().equals("3rd Year")){
             choice = 2;
         }
-        else if(myDept.trim().equals("ME")){
+        else if(myYear.trim().equals("4th Year")){
             choice = 3;
         }
-        else if(myDept.trim().equals("TE")){
-            choice = 4;
-        }
-        else if(myDept.trim().equals("CE")){
-            choice = 5;
-        }
-        else if(myDept.trim().equals("IPE")){
-            choice = 6;
-        }
-        else if(myDept.trim().equals("BBA")){
-            choice = 7;
-        }
+
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.MyDialogTheme);
-        builder.setTitle("Select your department").setSingleChoiceItems(items, choice,
+        builder.setTitle("Select your Academic Year").setSingleChoiceItems(items, choice,
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -81,27 +71,6 @@ public class department_change extends DialogFragment {
                                 selection = (String) items[which];
 
                                 break;
-
-                            case 4:
-                                selection = (String) items[which];
-
-                                break;
-
-                            case 5:
-                                selection = (String) items[which];
-
-                                break;
-
-                            case 6:
-                                selection = (String) items[which];
-
-                                break;
-
-                            case 7:
-                                selection = (String) items[which];
-
-                                break;
-
                         }
                     }
                 });
@@ -112,35 +81,24 @@ public class department_change extends DialogFragment {
 
                 if(selection.isEmpty()){
                     if(choice == 0){
-                        myDept = (String) items[choice];
+                        myYear = (String) items[choice];
                     }
                     else if(choice == 1){
-                        myDept = (String) items[choice];
+                        myYear = (String) items[choice];
                     }
                     else if(choice == 2){
-                        myDept = (String) items[choice];
+                        myYear = (String) items[choice];
                     }
                     else if(choice == 3){
-                        myDept = (String) items[choice];
-                    }
-                    else if(choice == 4){
-                        myDept = (String) items[choice];
-                    }
-                    else if(choice == 5){
-                        myDept = (String) items[choice];
-                    }
-                    else if(choice == 6){
-                        myDept = (String) items[choice];
-                    }
-                    else if(choice == 7){
-                        myDept = (String) items[choice];
+                        myYear = (String) items[choice];
                     }
 
                     Toast.makeText(getContext(),"Data not updated!",Toast.LENGTH_SHORT).show();
+
                 }
 
                 else{
-                    myDept = selection;
+                    myYear = selection;
                     Toast.makeText(getContext(),"Data updated!",Toast.LENGTH_SHORT).show();
                 }
 

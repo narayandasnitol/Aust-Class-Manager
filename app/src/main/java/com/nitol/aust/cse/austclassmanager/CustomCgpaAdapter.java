@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class CustomCgpaAdapter extends BaseAdapter{
 
-    CgpaCalculator cg = new CgpaCalculator();
+    CgpaCalculator_Activity cg = new CgpaCalculator_Activity();
 
     ArrayList<String> aL1 = new ArrayList<>();
     ArrayList<String> aL2 = new ArrayList<>();
@@ -22,7 +22,7 @@ public class CustomCgpaAdapter extends BaseAdapter{
     Context context;
     private static LayoutInflater  inflater = null;
 
-    public CustomCgpaAdapter(CgpaCalculator mainAct, ArrayList<String> a1, ArrayList<String>
+    public CustomCgpaAdapter(CgpaCalculator_Activity mainAct, ArrayList<String> a1, ArrayList<String>
             a2, ArrayList<String> a3, ArrayList<String> a4){
         aL1 = a1;
         aL2 = a2;

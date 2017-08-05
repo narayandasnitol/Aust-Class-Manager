@@ -24,7 +24,7 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class CgpaCalculator extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class CgpaCalculator_Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     ListView lv;
     Toolbar toolbar;
     Button add_btn;
@@ -36,7 +36,7 @@ public class CgpaCalculator extends AppCompatActivity implements NavigationView.
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
-    DatabaseHelper myDb;
+    ProfileDatabaseHelper myDb;
 
 
     ArrayList<String> arrayList = new ArrayList<>();
@@ -57,7 +57,7 @@ public class CgpaCalculator extends AppCompatActivity implements NavigationView.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navi_draw_cgpa);
 
-        myDb = new DatabaseHelper(this);
+        myDb = new ProfileDatabaseHelper(this);
 
         lv = (ListView) findViewById(R.id.id_listView);
         add_btn = (Button) findViewById(R.id.id_add_btn);
@@ -164,7 +164,7 @@ public class CgpaCalculator extends AppCompatActivity implements NavigationView.
         circleImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CgpaCalculator.this, ProfileActivity.class);
+                Intent intent = new Intent(CgpaCalculator_Activity.this, Profile_Activity.class);
                 startActivity(intent);
             }
         });
@@ -268,7 +268,7 @@ public class CgpaCalculator extends AppCompatActivity implements NavigationView.
                         arrayList3.add(my_gpa);
                         arrayList4.add(my_grade);
 
-                        CustomCgpaAdapter customAdapter = new CustomCgpaAdapter(CgpaCalculator.this,
+                        CustomCgpaAdapter customAdapter = new CustomCgpaAdapter(CgpaCalculator_Activity.this,
                                 arrayList, arrayList2, arrayList3, arrayList4);
                         customAdapter.notifyDataSetChanged();
                         lv.setAdapter(customAdapter);
@@ -305,7 +305,7 @@ public class CgpaCalculator extends AppCompatActivity implements NavigationView.
         switch (id){
             case R.id.home:
 
-                Intent intent1 = new Intent(CgpaCalculator.this, MenuActivity.class);
+                Intent intent1 = new Intent(CgpaCalculator_Activity.this, Menu_Activity.class);
                 startActivity(intent1);
                 finish();
 
@@ -313,7 +313,7 @@ public class CgpaCalculator extends AppCompatActivity implements NavigationView.
 
             case R.id.routine:
 
-                Intent intent2 = new Intent(CgpaCalculator.this, ClassRoutineActivity.class);
+                Intent intent2 = new Intent(CgpaCalculator_Activity.this, ClassRoutineActivity.class);
                 startActivity(intent2);
                 finish();
                 break;
@@ -323,21 +323,21 @@ public class CgpaCalculator extends AppCompatActivity implements NavigationView.
                 break;
 
             case R.id.my_details:
-                Intent intent22 = new Intent(CgpaCalculator.this, ClassDetails.class);
+                Intent intent22 = new Intent(CgpaCalculator_Activity.this, ClassDetails_Activity.class);
                 startActivity(intent22);
                 finish();
 
                 break;
 
             case R.id.quiz:
-                Intent intent223 = new Intent(CgpaCalculator.this, QuizReminder.class);
+                Intent intent223 = new Intent(CgpaCalculator_Activity.this, QuizReminder_Activity.class);
                 startActivity(intent223);
                 finish();
 
                 break;
 
             case R.id.result:
-                Intent intent3 = new Intent(CgpaCalculator.this, ResultCheckActivity.class);
+                Intent intent3 = new Intent(CgpaCalculator_Activity.this, ResultInformationActivity.class);
                 startActivity(intent3);
                 finish();
 
@@ -345,19 +345,19 @@ public class CgpaCalculator extends AppCompatActivity implements NavigationView.
 
 
             case R.id.profile:
-                Intent intent6 = new Intent(CgpaCalculator.this, ProfileActivity.class);
+                Intent intent6 = new Intent(CgpaCalculator_Activity.this, Profile_Activity.class);
                 startActivity(intent6);
                 finish();
 
                 break;
 
             case R.id.about:
-                Toast.makeText(getApplicationContext(),"About",Toast.LENGTH_SHORT).show();
-
+                Intent intent = new Intent(CgpaCalculator_Activity.this, Credit_activity.class);
+                startActivity(intent);
                 break;
 
             case R.id.settings:
-                Intent intent4 = new Intent(CgpaCalculator.this, Settings.class);
+                Intent intent4 = new Intent(CgpaCalculator_Activity.this, Settings_Activity.class);
                 startActivity(intent4);
                 finish();
 
@@ -383,13 +383,14 @@ public class CgpaCalculator extends AppCompatActivity implements NavigationView.
         int id = item.getItemId();
 
         if(id == R.id.tool_settings){
-            Intent intent = new Intent(CgpaCalculator.this, Settings.class);
+            Intent intent = new Intent(CgpaCalculator_Activity.this, Settings_Activity.class);
             startActivity(intent);
 
         }
         else if(id == R.id.tool_about){
 
-            Toast.makeText(getApplicationContext(),"This is About !", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(CgpaCalculator_Activity.this, Credit_activity.class);
+            startActivity(intent);
 
         }
 

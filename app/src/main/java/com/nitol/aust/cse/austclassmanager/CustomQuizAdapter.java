@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class Quiz_list_adapter extends BaseAdapter{
+public class CustomQuizAdapter extends BaseAdapter{
 
 
     Context context;
@@ -35,8 +35,8 @@ public class Quiz_list_adapter extends BaseAdapter{
 
     private static LayoutInflater  inflater = null;
 
-    public Quiz_list_adapter(QuizReminder mainAct, ArrayList<String> a1,ArrayList<String> a2,ArrayList<String> a3,
-                             ArrayList<String> a4,ArrayList<String> a5,ArrayList<String> a6,
+    public CustomQuizAdapter(QuizReminder_Activity mainAct, ArrayList<String> a1, ArrayList<String> a2, ArrayList<String> a3,
+                             ArrayList<String> a4, ArrayList<String> a5, ArrayList<String> a6,
                              ArrayList<String> a7){
         aL1 = a1;
         aL2 = a2;
