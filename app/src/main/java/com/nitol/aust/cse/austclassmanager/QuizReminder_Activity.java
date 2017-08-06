@@ -16,11 +16,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class QuizReminder_Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
@@ -31,6 +28,7 @@ public class QuizReminder_Activity extends AppCompatActivity
     NavigationView navigationView;
 
     ListView lv;
+    TextView tv;
     QuizDatabaseHelper myDb;
     ProfileDatabaseHelper myDb2;
 
@@ -58,6 +56,7 @@ public class QuizReminder_Activity extends AppCompatActivity
         lv =  (ListView) findViewById(R.id.custom_listView);
         myDb = new QuizDatabaseHelper(this);
         myDb2 = new ProfileDatabaseHelper(this);
+        tv = (TextView) findViewById(R.id.textView111);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -86,7 +85,7 @@ public class QuizReminder_Activity extends AppCompatActivity
         Cursor data = myDb.getAllData();
 
         if(data.getCount() == 0){
-            Toast.makeText(getApplicationContext(), "Nothing found!", Toast.LENGTH_SHORT).show();
+            tv.setText("Nothing Found!");
         }
         else{
             while(data.moveToNext()){
@@ -187,7 +186,7 @@ public class QuizReminder_Activity extends AppCompatActivity
         TextView nav_section = (TextView)hView.findViewById(R.id.header_Section);
         nav_section.setText(mySection);
 
-        CircleImageView circleImageView = (CircleImageView)hView.findViewById(R.id.header_image);
+        /*CircleImageView circleImageView = (CircleImageView)hView.findViewById(R.id.header_image);
         circleImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -195,7 +194,7 @@ public class QuizReminder_Activity extends AppCompatActivity
                 startActivity(intent);
             }
         });
-
+*/
 
     }
 

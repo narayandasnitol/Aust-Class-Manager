@@ -17,6 +17,18 @@
         app:elevation="8dp"
         app:backgroundTint="@color/colorPrimaryDark"/>
 
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/textView111"
+        android:paddingTop="10dip"
+        android:paddingBottom="10dip"
+        android:textSize="26sp"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:textColor="#ff000000"
+        android:background="#ffffffff"
+        android:gravity="center"
+        />
+
     <ListView
         android:id="@+id/custom_listView"
         android:layout_width="match_parent"

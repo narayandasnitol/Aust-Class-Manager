@@ -28,12 +28,13 @@ public class SetQuiz_Activity extends AppCompatActivity implements
     EditText title, details;
     Button save, time;
     TextView s_date, s_time;
+    boolean check = false;
 
 
     QuizDatabaseHelper myDb;
 
-    String q_title, q_details, h, m, y, mo, d;
-    int year, month, day, hour, minute;
+    String q_title, q_details, h, m, y, mo, d, dd, mm, yy, yr, mn, dy, hr, mnt;
+    int year, month, day, hour, minute, hh, mmm, alarm_id;
     int yearFinal, monthFinal, dayFinal, hourFinal, minuteFinal;
 
     @Override
@@ -53,15 +54,13 @@ public class SetQuiz_Activity extends AppCompatActivity implements
 
         Calendar c = Calendar.getInstance();
 
-        String yy = String.valueOf(c.get(Calendar.YEAR));
-        String mm = String.valueOf(c.get(Calendar.MONTH)+1);
-        String dd = String.valueOf(c.get(Calendar.DAY_OF_MONTH));
+        yy = String.valueOf(c.get(Calendar.YEAR));
+        mm = String.valueOf(c.get(Calendar.MONTH)+1);
+        dd = String.valueOf(c.get(Calendar.DAY_OF_MONTH));
 
 
-        int hh = c.get(Calendar.HOUR_OF_DAY);
-        int mmm = c.get(Calendar.MINUTE);
-
-        Log.d("check", String.valueOf(hh));
+        hh = c.get(Calendar.HOUR_OF_DAY);
+        mmm = c.get(Calendar.MINUTE);
 
         String timeSet = "";
         if (hh > 12) {
@@ -90,6 +89,14 @@ public class SetQuiz_Activity extends AppCompatActivity implements
 
 
 
+        yr = String.valueOf(c.get(Calendar.YEAR));
+        mn = String.valueOf(c.get(Calendar.MONTH)+1);
+        dy = String.valueOf(c.get(Calendar.DAY_OF_MONTH));
+        hr = String.valueOf(c.get(Calendar.HOUR_OF_DAY));
+        mnt = String.valueOf(c.get(Calendar.MINUTE));
+
+        Log.d("data", yr+" "+dy+" "+mn+" "+hr+" "+mnt+" "+check);
+
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -105,6 +112,7 @@ public class SetQuiz_Activity extends AppCompatActivity implements
                 month = c.get(Calendar.MONTH);
                 day = c.get(Calendar.DAY_OF_MONTH);
 
+                check = true;
 
                 DatePickerDialog datePickerDialog = new DatePickerDialog(SetQuiz_Activity.this,R.style.DatePickerDialogTheme,
                         SetQuiz_Activity.this, year,month, day);
@@ -126,19 +134,45 @@ public class SetQuiz_Activity extends AppCompatActivity implements
 
                 }
                 else{
-                    int alarm_id =  myDb.insertData(q_title, q_details, h, m, y, mo, d);
+                    if(check == true){
+                        alarm_id =  myDb.insertData(q_title, q_details, h, m, y, mo, d);
+                    }
+                    else{
+                        alarm_id =  myDb.insertData(q_title, q_details, hr, mnt, yr, mn, dy);
+                    }
 
-                    if(Integer.valueOf(m) <=9){
-                        m = "0"+m;
+
+                    if(check ==  true){
+                        if(Integer.valueOf(m) <=9) {
+                            m = "0" + m;
+                        }
+                    }
+                    else {
+                        if (Integer.valueOf(mnt) <= 9) {
+                            mnt = "0" + mnt;
+                        }
                     }
 
                     Calendar calendar2 = Calendar.getInstance();
 
-                    calendar2.set(Calendar.HOUR_OF_DAY, Integer.parseInt(h));
-                    calendar2.set(Calendar.MINUTE, Integer.parseInt(m));
-                    calendar2.set(Calendar.YEAR, Integer.parseInt(y));
-                    calendar2.set(Calendar.MONTH, Integer.parseInt(mo)-1);
-                    calendar2.set(Calendar.DAY_OF_MONTH, Integer.parseInt(d)-1);
+                    if(check == true) {
+                        calendar2.set(Calendar.HOUR_OF_DAY, Integer.parseInt(h));
+                        calendar2.set(Calendar.MINUTE, Integer.parseInt(m));
+                        calendar2.set(Calendar.YEAR, Integer.parseInt(y));
+                        calendar2.set(Calendar.MONTH, Integer.parseInt(mo) - 1);
+                        calendar2.set(Calendar.DAY_OF_MONTH, Integer.parseInt(d) - 1);
+
+                        Log.d("data", y+" "+d+" "+m+" "+h+" "+mo);
+                    }
+                    else{
+                        calendar2.set(Calendar.HOUR_OF_DAY, Integer.parseInt((hr)));
+                        calendar2.set(Calendar.MINUTE, Integer.parseInt((mnt)));
+                        calendar2.set(Calendar.YEAR, Integer.parseInt(yr));
+                        calendar2.set(Calendar.MONTH, Integer.parseInt(mn) - 1);
+                        calendar2.set(Calendar.DAY_OF_MONTH, Integer.parseInt(dy) - 1);
+
+                        Log.d("data", yr+" "+dy+" "+mn+" "+hr+" "+mnt);
+                    }
 
 
                     Intent intent = new Intent(getApplicationContext(), NotificationReceiver.class);
@@ -153,6 +187,7 @@ public class SetQuiz_Activity extends AppCompatActivity implements
                             AlarmManager.INTERVAL_HOUR, pendingIntent);
 
 
+                    Toast.makeText(getApplicationContext(), "Data Inserted", Toast.LENGTH_SHORT).show();
 
                     Intent intent2 = new Intent(SetQuiz_Activity.this, QuizReminder_Activity.class);
                     startActivity(intent2);
@@ -246,7 +281,8 @@ public class SetQuiz_Activity extends AppCompatActivity implements
         }
         else if(id == R.id.tool_about){
 
-            Toast.makeText(getApplicationContext(),"This is About !", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(SetQuiz_Activity.this, Credit_activity.class);
+            startActivity(intent);
 
         }
         else if ( id == android.R.id.home){

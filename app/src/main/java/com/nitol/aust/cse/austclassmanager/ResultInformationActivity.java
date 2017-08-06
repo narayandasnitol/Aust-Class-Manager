@@ -23,8 +23,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
 public class ResultInformationActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private TabLayout t1;
@@ -147,14 +145,14 @@ public class ResultInformationActivity extends AppCompatActivity implements Navi
         TextView nav_section = (TextView)hView.findViewById(R.id.header_Section);
         nav_section.setText(mySection);
 
-        CircleImageView circleImageView = (CircleImageView)hView.findViewById(R.id.header_image);
+        /*CircleImageView circleImageView = (CircleImageView)hView.findViewById(R.id.header_image);
         circleImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ResultInformationActivity.this, Profile_Activity.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
 
     }

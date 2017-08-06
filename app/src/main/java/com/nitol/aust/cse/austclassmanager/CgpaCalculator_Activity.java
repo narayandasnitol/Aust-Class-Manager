@@ -22,8 +22,6 @@ import android.widget.Toast;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
 public class CgpaCalculator_Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     ListView lv;
     Toolbar toolbar;
@@ -160,14 +158,14 @@ public class CgpaCalculator_Activity extends AppCompatActivity implements Naviga
         TextView nav_section = (TextView)hView.findViewById(R.id.header_Section);
         nav_section.setText(mySection);
 
-        CircleImageView circleImageView = (CircleImageView)hView.findViewById(R.id.header_image);
+       /* CircleImageView circleImageView = (CircleImageView)hView.findViewById(R.id.header_image);
         circleImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CgpaCalculator_Activity.this, Profile_Activity.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
 
     }

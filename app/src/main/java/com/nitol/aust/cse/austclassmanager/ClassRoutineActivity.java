@@ -16,7 +16,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 import uk.co.senab.photoview.PhotoViewAttacher;
 
 public class ClassRoutineActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -257,14 +256,14 @@ public class ClassRoutineActivity extends AppCompatActivity implements Navigatio
         TextView nav_section = (TextView)hView.findViewById(R.id.header_Section);
         nav_section.setText(mySection);
 
-        CircleImageView circleImageView = (CircleImageView)hView.findViewById(R.id.header_image);
+        /*CircleImageView circleImageView = (CircleImageView)hView.findViewById(R.id.header_image);
         circleImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ClassRoutineActivity.this, Profile_Activity.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
 
     }

@@ -13,9 +13,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Menu_Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -23,6 +23,7 @@ public class Menu_Activity extends AppCompatActivity implements NavigationView.O
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     ProfileDatabaseHelper myDb;
+    TextView tv;
 
     String myDept;
     String myYear;
@@ -40,6 +41,7 @@ public class Menu_Activity extends AppCompatActivity implements NavigationView.O
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout) ;
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        tv = (TextView) findViewById(R.id.textView18);
 
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle
                 (this,drawerLayout,toolbar, R.string.open_drawer, R.string.close_drawer);
@@ -50,12 +52,35 @@ public class Menu_Activity extends AppCompatActivity implements NavigationView.O
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(0).setChecked(true);
 
+
+        Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.animation_2);
+        tv.setAnimation(animation);
+
+        animation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+                tv.setAnimation(animation);
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                //tv.setAnimation(animation);
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+               // tv.setAnimation(animation);
+            }
+        });
+
+
         myDb = new ProfileDatabaseHelper(this);
-
-
         getAllData();
 
     }
+
+
 
 
     public void classRoutine(View view) {
@@ -165,14 +190,14 @@ public class Menu_Activity extends AppCompatActivity implements NavigationView.O
         TextView nav_section = (TextView)hView.findViewById(R.id.header_Section);
         nav_section.setText(mySection);
 
-        CircleImageView circleImageView = (CircleImageView)hView.findViewById(R.id.header_image);
+        /*CircleImageView circleImageView = (CircleImageView)hView.findViewById(R.id.header_image);
         circleImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Menu_Activity.this, Profile_Activity.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
 
     }

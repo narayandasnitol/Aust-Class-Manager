@@ -78,8 +78,9 @@
         android:textColor="#ff4141"
         android:layout_marginTop="47dp"
         android:text="Date:"
+        android:fontFamily="serif-monospace"
         android:textStyle="bold"
-        android:textSize="24sp"
+        android:textSize="22sp"
         android:layout_below="@+id/add_time"
         android:layout_alignStart="@+id/quiz_details" />
 
@@ -91,7 +92,9 @@
         android:text="Time:"
         android:textColor="#ff0404"
         android:textStyle="bold"
-        android:textSize="24sp"
+
+        android:fontFamily="serif-monospace"
+        android:textSize="22sp"
         android:layout_below="@+id/textView6"
         android:layout_alignStart="@+id/textView6" />
 
@@ -101,7 +104,8 @@
         android:layout_height="wrap_content"
         android:text="15-7-2017"
         android:textSize="28sp"
-        android:textColor="#007c23"
+        android:fontFamily="serif-monospace"
+        android:textColor="#000000"
         android:textStyle="bold"
         android:layout_above="@+id/textView7"
         android:layout_centerHorizontal="true" />
@@ -111,8 +115,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="9:51PM"
-        android:textColor="#007c23"
+        android:textColor="#020302"
         android:textStyle="bold"
+        android:fontFamily="serif-monospace"
         android:layout_alignBottom="@+id/textView7"
         android:layout_alignStart="@+id/show_date"
         android:textSize="26sp"/>
@@ -125,7 +130,7 @@
         android:gravity="center"
         android:fontFamily="monospace"
         android:text="Add Quiz Title and Quiz Details"
-        android:textSize="22sp"
+        android:textSize="16sp"
         android:textColor="#bd3939"
         android:textStyle="bold"
 

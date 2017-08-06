@@ -29,7 +29,7 @@ public class CustomQuizAdapter extends BaseAdapter{
 
     QuizDatabaseHelper myDb;
     Intent intent;
-    AlarmManager alarmManager;
+    TextView tv1;
 
 
 
@@ -74,7 +74,6 @@ public class CustomQuizAdapter extends BaseAdapter{
         TextView tv1, tv2, tv3, tv4;
         ImageView iv, iv2;
 
-
     }
 
     @Override
@@ -91,7 +90,6 @@ public class CustomQuizAdapter extends BaseAdapter{
         myHolder.tv3 = (TextView) myView.findViewById(R.id.my_time);
         myHolder.tv4 = (TextView) myView.findViewById(R.id.my_date);
         myHolder.iv = (ImageView) myView.findViewById(R.id.delete_image);
-        //myHolder.iv2 = (ImageView) myView.findViewById(R.id.imageView3);
 
 
         int hourFinal, minuteFinal;
@@ -139,7 +137,6 @@ public class CustomQuizAdapter extends BaseAdapter{
         myHolder.tv3.setText("Time: "+final_time);
         myHolder.tv4.setText("Date: "+d+"-"+mo+"-"+y);
         myHolder.iv.setImageResource(R.drawable.delete);
-       // myHolder.iv2.setImageResource(R.drawable.alerm2);
 
 
         myHolder.iv.setOnClickListener(new View.OnClickListener() {
@@ -160,15 +157,12 @@ public class CustomQuizAdapter extends BaseAdapter{
 
                     alarmManager.cancel(pendingIntent);
 
-
-
-
-
                     aL1.remove(position);
                     notifyDataSetChanged();
 
                     if (deletedRow > 0) {
                         Toast.makeText(context, "Data Deleted !", Toast.LENGTH_LONG).show();
+
                     } else {
                         Toast.makeText(context, "Data not Deleted !", Toast.LENGTH_LONG).show();
                     }
