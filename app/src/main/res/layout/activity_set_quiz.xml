@@ -37,7 +37,7 @@
         android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Quiz Details"
+        android:hint="Quiz Syllabus"
         android:textAlignment="center"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"/>
@@ -129,7 +129,7 @@
         android:layout_marginTop="27dp"
         android:gravity="center"
         android:fontFamily="monospace"
-        android:text="Add Quiz Title and Quiz Details"
+        android:text="Add Quiz Title and Quiz Syllabus"
         android:textSize="16sp"
         android:textColor="#bd3939"
         android:textStyle="bold"
